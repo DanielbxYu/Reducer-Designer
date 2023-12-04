@@ -1,0 +1,1809 @@
+Dim F%, D%, n%, zxry%
+Dim user%
+Private Declare Function SetCapture Lib "user32" (ByVal hwnd As Long) As Long
+Private Declare Function ReleaseCapture Lib "user32" () As Long
+Private Sub Command1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+If 0 <= X And X <= Command1.Width And 0 <= Y And Y <= Command1.Height Then
+SetCapture Command1.hwnd
+Command1.Font.Bold = True
+Else
+ReleaseCapture
+Command1.Font.Bold = False
+End If
+End Sub
+Private Sub Command1_Click()
+user = user + 1
+If user <= 2 Then
+Command1.Font.Bold = False
+Command1.Enabled = False
+Command2.Enabled = True
+Command3.Enabled = True
+Text1.Enabled = False
+Text2.Enabled = False
+Text3.Enabled = False
+Text4.Enabled = False
+Text5.Enabled = False
+Frame1.Enabled = False
+Text11.Enabled = False
+Const Π = 3.14159
+Dim SSS1$, SSS2$, SSS3$, SSS4$, ss1$, ss2$, ss3$, ss4$, ss5$, ss6$, ddj$, clm$, clm1$, clm2$, cdz1$, cdz2$, cdzm$, cdzm1$, cdzm2$, zc1$, zc2$, zcy1$, zcy$, zcwd1%, zcwd2%, zcd1%, zcd2%, zcB1%, zcB2%, zcL1!, zcL2!, lzq1$, lzq2$, lzqd1%, lzqd2%, lzql1%, lzql2%
+Dim xx1!, xx2!, xx3! 'xx作为计算中的超级未知数存在
+Dim Year%, Day%, bz%, v1!, cm%, clsj$, uii!
+Dim Pw!, Pd!, ηw!, η1!, η2!, η3!, η4!, η!
+Dim mn1!
+If Option2.Value = True Then
+zxry = 2
+Else
+zxry = 1
+End If
+F = Text1.Text
+D = Text2.Text
+n = Text3.Text
+Year = Text4.Text
+Day = Text11.Text
+bz = Text5.Text
+'zxry = Text6.Text
+'v1 = Text7.Text
+'一、选择合适电动机
+η1 = 0.99
+η2 = 0.97
+η3 = 0.99
+η4 = 0.96 'η1,η2,η3,η4分别代表轴承、齿轮、联轴器、卷筒的工作效率
+'If N1 = 0 Then
+'Pw = F * v1 / 1000
+'Else
+Pw = F * 3.14 * D * n / 60 / 1000 / 1000
+'End If
+η = η1 ^ 3 * η2 * η3 ^ 2 * η4
+Pd = Pw / η
+'1. 确定电动机的额定功率
+Dim Ped!, nd%, YE$
+If n >= 210 And n < 310 Then '转速nd选择1000r/min挡位
+If Pd < 7.5 Then
+Ped = 7.5
+nd = 970
+YE = "Y160M-6"
+Else
+If Pd < 11 Then
+Ped = 11
+nd = 970
+YE = "Y160L-6"
+Else
+If Pd < 15 Then
+Ped = 15
+nd = 970
+YE = "Y180L-6"
+Else
+If Pd < 18.5 Then
+Ped = 18.5
+nd = 970
+YE = "Y200L1-6"
+Else
+If Pd < 22 Then
+Ped = 22
+nd = 970
+YE = "Y200L2-6"
+Else
+If Pd < 30 Then
+Ped = 30
+nd = 980
+YE = "Y255M-6"
+Else
+If Pd < 37 Then
+Ped = 37
+nd = 980
+YE = "Y250M-6"
+Else
+If Pd < 45 Then
+Ped = 45
+nd = 980
+YE = "Y280S-6"
+Else
+Text8.Text = "Error！！！！！！！"
+End If
+End If
+End If
+End If
+End If
+End If
+End If
+End If
+ElseIf n < 210 Then '转速nd选择750r/min挡位
+If Pd < 7.5 Then
+Ped = 7.5
+nd = 720
+YE = "Y160L-8"
+Else
+If Pd < 11 Then
+Ped = 11
+nd = 730
+YE = "Y180L-8"
+Else
+If Pd < 15 Then
+Ped = 15
+nd = 730
+YE = "Y200L-8"
+Else
+If Pd < 18.5 Then
+Ped = 18.5
+nd = 730
+YE = "Y225S-8"
+Else
+If Pd < 22 Then
+Ped = 22
+nd = 730
+YE = "Y225M-8"
+Else
+If Pd < 30 Then
+Ped = 30
+nd = 730
+YE = "Y250M-8"
+Else
+If Pd < 37 Then
+Ped = 37
+nd = 730
+YE = "Y280S-8"
+Else
+If Pd < 45 Then
+Ped = 45
+nd = 740
+YE = "Y280M-8"
+Else
+Text8.Text = "Error！！！！！！！"
+End If
+End If
+End If
+End If
+End If
+End If
+End If
+End If
+ElseIf n >= 310 Then '转速nd选择1500r/min挡位
+
+If Pd < 7.5 Then
+Ped = 7.5
+nd = 1440
+YE = "Y132M-4"
+Else
+If Pd < 11 Then
+Ped = 11
+nd = 1460
+YE = "Y160M-4"
+Else
+If Pd < 15 Then
+Ped = 15
+nd = 1460
+YE = "Y160L-4"
+Else
+If Pd < 18.5 Then
+Ped = 18.5
+nd = 1470
+YE = "Y180M-4"
+Else
+If Pd < 22 Then
+Ped = 22
+nd = 1470
+YE = "Y180L-4"
+Else
+If Pd < 30 Then
+Ped = 30
+nd = 1470
+YE = "Y200L-4"
+Else
+If Pd < 37 Then
+Ped = 37
+nd = 1480
+YE = "Y225S-4"
+Else
+If Pd < 45 Then
+Ped = 45
+nd = 1480
+YE = "Y225M-4"
+Else
+Text8.Text = "Error！！！！！！！"
+End If
+End If
+End If
+End If
+End If
+End If
+End If
+End If
+End If
+ddj = YE
+'2. 确定转速符合要求
+xx1 = n * 3
+xx2 = n * 5
+If nd < xx2 And nd > xx1 Then
+Text8.Text = "Ped=" & Ped & "kw, nd=" & nd & "r/min" & ",型号为：" & YE
+Else
+Text8.Text = "Error！！！！！！！"
+End If '3. 确定电动机参数
+'4. 传动装置的运动和动力参数计算
+Dim i!, Nn1!, Nn2!, T1!, T2!, P1!, P2!, ηd! 'N1，N2，T1，T2，P1,P2分别为两轴的转速，输入扭矩和功率
+ηd = 0.8
+xx1 = nd / n / 1.05
+xx2 = nd / n / 0.95
+xx3 = (xx1 + xx2) / 2
+i = Round(xx3, 1)
+uii = i
+Nn1 = nd
+xx1 = Nn1 / i
+Nn2 = Round(xx1, 1)
+xx1 = Ped * ηd * η3 * η1
+P1 = Round(xx1, 2)
+xx1 = P1 * η1 * η2
+P2 = Round(xx1, 2)
+P2x = P2 * η1
+xx1 = 9550 * P1 / Nn1
+T1 = Round(xx1, 2)
+xx1 = T1 * i * η1 * η2
+T2 = Round(xx1, 2)
+Text10.Text = "高速轴：" & Nn1 & "r/min ," & P1 & "kw ," & T1 & "N*m; 低速轴：" & Nn2 & "r/min ," & P2 & "kw ," & T2 & "N*m"
+
+'二、齿轮设计
+Dim σHlim1!, σHlim2!, σF1!, σF2!, σF!, σH!, σFlim1!, σFlim2!, σFE1!, σFE2!, σHP1!, σHP2!, σFP1!, σFP2!, YST%, SH!, SF!, ZN1!, ZN2!, YN1!, YN2!, K!, z1%, z2%, u!, φd!, β!, zv1!, zv2!, YFa1!, YFa2!, YSa1!, YSa2!, Yβ!, Yε!, mn!, a!, d1!, d2!, b!, b1!, b2!, da1!, da2!, df1!, df2!, v!, ZH!, ZE!
+Dim Nj1 As Double, Nj2 As Double
+Dim β1!, β2!, β3!, βs$, dx!
+K = 1.05
+SH = 1.05
+SF = 1.25
+YST = 2
+If Ped > 22 Then '大小齿轮均选用20Cr钢，渗碳淬火，硬度达到60HRC相当于697.5HV
+ss2 = 1
+clm = "大小齿轮均选用20Cr钢，渗碳淬火，硬度达到60HRC相当于697.5HV"
+clm1 = 0
+clm2 = 0
+σHlim1 = 1500
+σHlim2 = 1500
+σFlim1 = 461
+σFlim2 = 461
+σFE1 = σFlim1 * YST
+σFE2 = σFlim2 * YST
+Nj1 = 60 * Nn1 * Year * Day * bz * 8
+Nj2 = Nj1 / i
+xx1 = Log(Nj1) / Log(10)
+xx2 = -0.158 * xx1 + 2.405
+ZN1 = Round(xx2, 2)
+If ZN1 < 1 Then
+ZN1 = 1
+End If
+xx1 = Log(Nj2) / Log(10)
+xx2 = -0.158 * xx1 + 2.405
+ZN2 = Round(xx2, 2)
+If ZN2 < 1 Then
+ZN2 = 1
+End If
+xx1 = Log(Nj1) / Log(10)
+xx2 = -0.4314 * xx1 + 3.7942
+YN1 = Round(xx2, 2)
+If YN1 < 1 Then
+YN1 = 1
+End If
+xx1 = Log(Nj2) / Log(10)
+xx2 = -0.4314 * xx1 + 3.7942
+YN2 = Round(xx2, 2)
+If YN2 < 1 Then
+YN2 = 1
+End If
+σHP1 = ZN1 * σHlim1 / SH
+σHP2 = ZN2 * σHlim2 / SH
+σFP1 = YN1 * σFE1 / SF
+σFP2 = YN2 * σFE2 / SF
+'疲劳强度计算完毕
+Dim T&
+xx1 = 9.55 * P1 / Nn1
+T = 1000000 * Round(xx1, 2)
+If zxry = 2 Then  '按齿根弯曲疲劳强度设计，齿面接触疲劳强度校核
+φd = 0.8
+β = Π / 12
+z1 = 23
+z2 = z1 * i
+iz = i
+zz2 = z1 * iz
+xx1 = Round(z2, 0)
+'两齿轮齿数尽量互质
+xx2 = xx1 Mod 23
+If xx2 = 0 Then
+xx1 = xx1 + 1
+End If
+z2 = xx1
+u = z2 / z1
+zv1 = z1 / (Cos(β)) ^ 3
+zv2 = z2 / (Cos(β)) ^ 3
+YFa1 = 2.61
+YSa1 = 1.595
+If zv2 <= 80 Then
+YFa2 = 2.38 - 0.002 * zv2
+YSa2 = 0.002 * zv2 + 1.61
+Else
+If zv2 > 80 And zv2 <= 100 Then
+YFa2 = 2.38 - 0.002 * zv2
+YSa2 = 0.001 * zv2 + 1.69
+Else
+YFa2 = 2.28 - 0.001 * zv2
+YSa2 = 0.002 * zv2 + 1.59
+End If
+End If
+xx1 = YFa1 * YSa1 / σFP1
+xx2 = YFa2 * YSa2 / σFP2
+If xx1 > xx2 Then
+xx3 = xx1
+Else
+xx3 = xx2
+End If
+Yβ = 0.87
+Yε = 0.82
+xx1 = (2 * K * T * (Cos(β)) ^ 2 * xx3 * Yβ * Yε / (z1) ^ 2 / φd) ^ (1 / 3)
+xx2 = Round(xx1, 1)
+mn1 = xx2
+xx2 = 10 * xx2 / 5
+xx2 = Int(xx2)
+mn = (xx2 + 1) * 0.5
+'********************************
+If mn = 2 Then
+mn = 2.5
+End If
+'********************************
+a = mn * (z1 + z2) / 2 / Cos(β)
+a1 = Round(a, 2)
+a = Round(a1, 0)
+xx1 = mn * (z1 + z2) / 2 / a
+β = Atn((1 - (xx1) ^ 2) ^ (1 / 2) / xx1)
+d1 = mn * z1 / Cos(β)
+d2 = mn * z2 / Cos(β)
+b = φd * d1
+xx2 = Round(b, 0)
+b2 = (Round(xx2 / 5) + 1) * 5
+b1 = b2 + 5
+σH = 603 * (K * T * (u + 1) / u / b / (d1) ^ 2) ^ (1 / 2)
+If σHP1 < σHP2 Then
+xx3 = σHP1
+Else
+xx3 = σHP2
+End If
+If σH > xx3 Then
+Text12.Text = "Error！！！！！！！"
+End If
+v = 3.14 * d1 * Nn1 / 60 / 1000
+If v > 10 Then
+Text12.Text = "Error！！！！！！！"
+End If
+da1 = d1 + 5
+da2 = d2 + 5
+df1 = d1 - 6.25
+df2 = d2 - 6.25
+β1 = β * 180 / 3.14159
+β1 = Round(β1, 2)
+xx1 = Int(β1)
+xx2 = β1 - xx1
+xx2 = 60 * xx2
+xx3 = Int(xx2)
+xx2 = xx2 - xx3
+xx2 = 60 * xx2
+xx2 = Round(xx2, 0)
+βs = "β=" & xx1 & "°" & xx3 & "′" & xx2 & "″"
+clsj = "β=" & xx1 & "°" & xx3 & "′" & xx2 & "″,a=" & a & "mm,mn=" & mn & "mm,d1=" & d1 & "mm,d2=" & d2 & "mm," & vbCrLf & "z1=" & z1 & "齿,z2=" & z2 & "齿,b1=" & b1 & "mm,b2=" & b2 & "mm,da1=" & da1 & "mm,da2=" & da2 & "mm,df1=" & df1 & "mm,df2=" & df2 & "mm,i=" & u
+
+Else '按齿面接触疲劳强度设计，齿根弯曲疲劳强度校核
+z1 = 26
+xx1 = i * z1
+iz = i
+zz2 = z1 * iz
+xx1 = Round(xx1, 0)
+'两齿轮齿数应尽量互质
+xx2 = xx1 Mod 2
+If xx2 = 0 Then
+xx1 = xx1 + 1
+End If
+xx2 = xx1 Mod 13
+If xx2 = 0 Then
+xx1 = xx1 - 2
+End If
+z2 = xx1
+u = z2 / z1
+xx1 = 1 / i * Sqr((u - i) ^ 2)
+If xx1 > 0.05 Then
+Text12.Text = "Error！！！！！！！"
+End If
+φd = 1
+ZE = 189.8
+ZH = 2.5
+If σHP1 > σHP2 Then
+xx1 = σHP2
+Else
+xx1 = σHP1
+End If
+σHP = xx1
+d1 = (2 * K * T * (u + 1) * (ZH * ZE / xx1) ^ 2 / u / φd) ^ (1 / 3)
+d1 = Round(d1, 2)
+dx = d1
+xx2 = d1 / z1
+xx2 = Round(xx2, 1)
+mn1 = xx2
+mn = (Int(xx2 * 2) + 1) * 0.5
+'********************************
+If mn = 2 Then
+mn = 2.5
+End If
+'********************************
+d1 = mn * z1
+d2 = mn * z2
+b = φd * d1
+xx2 = Round(b, 0)
+b2 = (Round(xx2 / 5) + 1) * 5
+b1 = b2 + 5
+a = mn * (z1 + z2) / 2
+YFa1 = 2.6
+YSa1 = 1.6
+If z2 <= 80 Then
+YFa2 = 2.38 - 0.002 * z2
+YSa2 = 0.002 * z2 + 1.61
+Else
+If z2 > 80 And z2 <= 100 Then
+YFa2 = 2.38 - 0.002 * z2
+YSa2 = 0.001 * z2 + 1.69
+Else
+YFa2 = 2.28 - 0.001 * z2
+YSa2 = 0.002 * z2 + 1.59
+End If
+End If
+σF1 = 2 * K * T * YFa1 * YSa1 / b / mn ^ 2 / z1
+σF2 = σF1 * YFa2 * YSa2 / YFa1 / YSa1
+If σF1 > σFP1 And σF2 > σFP2 Then
+Text12.Text = "Error！！！！！！！"
+End If
+v = 3.14 * d1 * Nn1 / 60 / 1000
+If v > 5 Then
+Text12.Text = "Error！！！！！！！"
+End If
+da1 = d1 + 5
+da2 = d2 + 5
+df1 = d1 - 6.25
+df2 = d2 - 6.25
+β = 0
+clsj = "a=" & a & "mm,mn=" & mn & "mm,d1=" & d1 & "mm,d2=" & d2 & "mm,z1=" & z1 & "齿,z2=" & z2 & "齿," & vbCrLf & "b1=" & b1 & "mm,b2=" & b2 & "mm,da1=" & da1 & "mm,da2=" & da2 & "mm,df1=" & df1 & "mm,df2=" & df2 & "mm,i=" & u
+End If
+ElseIf Ped = 22 Then '大、小轮均选用40Cr钢，调质处理，小齿轮硬度达到280HBW相当于295HV，大齿轮硬度240HBW相当于252HV
+ss2 = 2
+clm = "大、小轮均选用40Cr钢，调质处理，小齿轮硬度达到280HBW相当于295HV，大齿轮硬度240HBW相当于252HV,满足小轮硬度比大轮高30-50HBW"
+clm1 = 0
+clm2 = 0
+σHlim1 = 760.335
+σHlim2 = 703.876
+σFlim1 = 312.375
+σFlim2 = 294.1
+σFE1 = σFlim1 * YST
+σFE2 = σFlim2 * YST
+Nj1 = 60 * Nn1 * Year * Day * bz * 8
+Nj2 = Nj1 / i
+xx1 = Log(Nj1) / Log(10)
+xx2 = -0.158 * xx1 + 2.405
+ZN1 = Round(xx2, 2)
+If ZN1 < 1 Then
+ZN1 = 1
+End If
+xx1 = Log(Nj2) / Log(10)
+xx2 = -0.158 * xx1 + 2.405
+ZN2 = Round(xx2, 2)
+If ZN2 < 1 Then
+ZN2 = 1
+End If
+xx1 = Log(Nj1) / Log(10)
+xx2 = -0.6056 * xx1 + 4.9224
+YN1 = Round(xx2, 2)
+If YN1 < 1 Then
+YN1 = 1
+End If
+xx1 = Log(Nj2) / Log(10)
+xx2 = -0.6056 * xx1 + 4.9224
+YN2 = Round(xx2, 2)
+If YN2 < 1 Then
+YN2 = 1
+End If
+σHP1 = ZN1 * σHlim1 / SH
+σHP2 = ZN2 * σHlim2 / SH
+σFP1 = YN1 * σFE1 / SF
+σFP2 = YN2 * σFE2 / SF
+'疲劳强度计算完毕
+xx1 = 9.55 * P1 / Nn1
+T = 1000000 * Round(xx1, 2)
+If zxry = 2 Then '按齿根弯曲疲劳强度设计，齿面接触疲劳强度校核
+φd = 0.8
+β = Π / 12
+z1 = 23
+z2 = z1 * i
+iz = i
+zz2 = z1 * iz
+xx1 = Round(z2, 0)
+'两齿轮齿数尽量互质
+xx2 = xx1 Mod 23
+If xx2 = 0 Then
+xx1 = xx1 + 1
+End If
+z2 = xx1
+u = z2 / z1
+zv1 = z1 / (Cos(β)) ^ 3
+zv2 = z2 / (Cos(β)) ^ 3
+YFa1 = 2.61
+YSa1 = 1.595
+If zv2 <= 80 Then
+YFa2 = 2.38 - 0.002 * zv2
+YSa2 = 0.002 * zv2 + 1.61
+Else
+If zv2 > 80 And zv2 <= 100 Then
+YFa2 = 2.38 - 0.002 * zv2
+YSa2 = 0.001 * zv2 + 1.69
+Else
+YFa2 = 2.28 - 0.001 * zv2
+YSa2 = 0.002 * zv2 + 1.59
+End If
+End If
+xx1 = YFa1 * YSa1 / σFP1
+xx2 = YFa2 * YSa2 / σFP2
+If xx1 > xx2 Then
+xx3 = xx1
+Else
+xx3 = xx2
+End If
+Yβ = 0.87
+Yε = 0.82
+xx1 = (2 * K * T * (Cos(β)) ^ 2 * xx3 * Yβ * Yε / (z1) ^ 2 / φd) ^ (1 / 3)
+xx2 = Round(xx1, 1)
+mn1 = xx2
+xx2 = 10 * xx2 / 5
+xx2 = Int(xx2)
+mn = (xx2 + 1) * 0.5
+'********************************
+If mn = 2 Then
+mn = 2.5
+End If
+'********************************
+a = mn * (z1 + z2) / 2 / Cos(β)
+a1 = Round(a, 2)
+a = Round(a1, 0)
+xx1 = mn * (z1 + z2) / 2 / a
+β = Atn((1 - (xx1) ^ 2) ^ (1 / 2) / xx1)
+d1 = mn * z1 / Cos(β)
+d2 = mn * z2 / Cos(β)
+b = φd * d1
+xx2 = Round(b, 0)
+b2 = (Round(xx2 / 5) + 1) * 5
+b1 = b2 + 5
+σH = 603 * (K * T * (u + 1) / u / b / (d1) ^ 2) ^ (1 / 2)
+If σHP1 < σHP2 Then
+xx3 = σHP1
+Else
+xx3 = σHP2
+End If
+If σH > xx3 Then
+Text12.Text = "Error！！！！！！！"
+End If
+v = 3.14 * d1 * Nn1 / 60 / 1000
+If v > 10 Then
+Text12.Text = "Error！！！！！！！"
+End If
+da1 = d1 + 5
+da2 = d2 + 5
+df1 = d1 - 6.25
+df2 = d2 - 6.25
+β1 = β * 180 / 3.14159
+β1 = Round(β1, 2)
+xx1 = Int(β1)
+xx2 = β1 - xx1
+xx2 = 60 * xx2
+xx3 = Int(xx2)
+xx2 = xx2 - xx3
+xx2 = 60 * xx2
+xx2 = Round(xx2, 0)
+βs = "β=" & xx1 & "°" & xx3 & "′" & xx2 & "″"
+clsj = "β=" & xx1 & "°" & xx3 & "′" & xx2 & "″,a=" & a & "mm,mn=" & mn & "mm,d1=" & d1 & "mm,d2=" & d2 & "mm," & vbCrLf & "z1=" & z1 & "齿,z2=" & z2 & "齿,b1=" & b1 & "mm,b2=" & b2 & "mm,da1=" & da1 & "mm,da2=" & da2 & "mm,df1=" & df1 & "mm,df2=" & df2 & "mm,i=" & u
+
+Else '按齿面接触疲劳强度设计，齿根弯曲疲劳强度校核
+z1 = 26
+xx1 = i * z1
+iz = i
+zz2 = z1 * iz
+xx1 = Round(xx1, 0)
+'两齿轮齿数尽量互质
+xx2 = xx1 Mod 2
+If xx2 = 0 Then
+xx1 = xx1 + 1
+End If
+xx2 = xx1 Mod 13
+If xx2 = 0 Then
+xx1 = xx1 - 2
+End If
+z2 = xx1
+u = z2 / z1
+xx1 = 1 / i * Sqr((u - i) ^ 2)
+If xx1 > 0.05 Then
+Text12.Text = "Error！！！！！！！"
+End If
+φd = 1
+ZE = 189.8
+ZH = 2.5
+If σHP1 > σHP2 Then
+xx1 = σHP2
+Else
+xx1 = σHP1
+End If
+σHP = xx1
+d1 = (2 * K * T * (u + 1) * (ZH * ZE / xx1) ^ 2 / u / φd) ^ (1 / 3)
+d1 = Round(d1, 2)
+dx = d1
+xx2 = d1 / z1
+xx2 = Round(xx2, 1)
+mn1 = xx2
+mn = (Int(xx2 * 2) + 1) * 0.5
+'********************************
+If mn = 2 Then
+mn = 2.5
+End If
+'********************************
+d1 = mn * z1
+d2 = mn * z2
+b = φd * d1
+xx2 = Round(b, 0)
+b2 = (Round(xx2 / 5) + 1) * 5
+b1 = b2 + 5
+a = mn * (z1 + z2) / 2
+YFa1 = 2.6
+YSa1 = 1.6
+If z2 <= 80 Then
+YFa2 = 2.38 - 0.002 * z2
+YSa2 = 0.002 * z2 + 1.61
+Else
+If z2 > 80 And z2 <= 100 Then
+YFa2 = 2.38 - 0.002 * z2
+YSa2 = 0.001 * z2 + 1.69
+Else
+YFa2 = 2.28 - 0.001 * z2
+YSa2 = 0.002 * z2 + 1.59
+End If
+End If
+σF1 = 2 * K * T * YFa1 * YSa1 / b / mn ^ 2 / z1
+σF2 = σF1 * YFa2 * YSa2 / YFa1 / YSa1
+If σF1 > σFP1 And σF2 > σFP2 Then
+Text12.Text = "Error！！！！！！！"
+End If
+v = 3.14 * d1 * Nn1 / 60 / 1000
+If v > 5 Then
+Text12.Text = "Error！！！！！！！"
+End If
+da1 = d1 + 5
+da2 = d2 + 5
+df1 = d1 - 6.25
+df2 = d2 - 6.25
+β = 0
+clsj = "a=" & a & "mm,mn=" & mn & "mm,d1=" & d1 & "mm,d2=" & d2 & "mm,z1=" & z1 & "齿,z2=" & z2 & "齿," & vbCrLf & "b1=" & b1 & "mm,b2=" & b2 & "mm,da1=" & da1 & "mm,da2=" & da2 & "mm,df1=" & df1 & "mm,df2=" & df2 & "mm,i=" & u
+End If
+ElseIf Ped < 22 Then '小齿轮选用40Cr钢，调质，硬度要求达到240HBW相当于252HV；大齿轮选用45钢，调质，硬度要求为200HBW相当于210HV
+ss2 = 3
+clm = 1
+clm1 = "小齿轮选用40Cr钢，调质，硬度要求达到240HBW相当于252HV"
+clm2 = "大齿轮选用45钢，调质，硬度要求为200HBW相当于210HV"
+σHlim1 = 703.876
+σHlim2 = 554.25
+σFlim1 = 294.1
+σFlim2 = 213.4
+σFE1 = σFlim1 * YST
+σFE2 = σFlim2 * YST
+Nj1 = 60 * Nn1 * Year * Day * bz * 8
+Nj2 = Nj1 / i
+xx1 = Log(Nj1) / Log(10)
+xx2 = -0.158 * xx1 + 2.405
+ZN1 = Round(xx2, 2)
+If ZN1 < 1 Then
+ZN1 = 1
+End If
+xx1 = Log(Nj2) / Log(10)
+xx2 = -0.158 * xx1 + 2.405
+ZN2 = Round(xx2, 2)
+If ZN2 < 1 Then
+ZN2 = 1
+End If
+xx1 = Log(Nj1) / Log(10)
+xx2 = -0.6056 * xx1 + 4.9224
+YN1 = Round(xx2, 2)
+If YN1 < 1 Then
+YN1 = 1
+End If
+xx1 = Log(Nj2) / Log(10)
+xx2 = -0.6056 * xx1 + 4.9224
+YN2 = Round(xx2, 2)
+If YN2 < 1 Then
+YN2 = 1
+End If
+σHP1 = ZN1 * σHlim1 / SH
+σHP2 = ZN2 * σHlim2 / SH
+σFP1 = YN1 * σFE1 / SF
+σFP2 = YN2 * σFE2 / SF
+'疲劳强度计算完毕
+xx1 = 9.55 * P1 / Nn1
+T = 1000000 * Round(xx1, 2)
+If zxry = 2 Then '按齿根弯曲疲劳强度设计，齿面接触疲劳强度校核
+φd = 0.8
+β = Π / 12
+z1 = 23
+z2 = z1 * i
+iz = i
+zz2 = z1 * iz
+xx1 = Round(z2, 0)
+'两齿轮齿数尽量互质
+xx2 = xx1 Mod 23
+If xx2 = 0 Then
+xx1 = xx1 + 1
+End If
+z2 = xx1
+u = z2 / z1
+zv1 = z1 / (Cos(β)) ^ 3
+zv2 = z2 / (Cos(β)) ^ 3
+YFa1 = 2.61
+YSa1 = 1.595
+If zv2 <= 80 Then
+YFa2 = 2.38 - 0.002 * zv2
+YSa2 = 0.002 * zv2 + 1.61
+Else
+If zv2 > 80 And zv2 <= 100 Then
+YFa2 = 2.38 - 0.002 * zv2
+YSa2 = 0.001 * zv2 + 1.69
+Else
+YFa2 = 2.28 - 0.001 * zv2
+YSa2 = 0.002 * zv2 + 1.59
+End If
+End If
+xx1 = YFa1 * YSa1 / σFP1
+xx2 = YFa2 * YSa2 / σFP2
+If xx1 > xx2 Then
+xx3 = xx1
+Else
+xx3 = xx2
+End If
+Yβ = 0.87
+Yε = 0.82
+xx1 = (2 * K * T * (Cos(β)) ^ 2 * xx3 * Yβ * Yε / (z1) ^ 2 / φd) ^ (1 / 3)
+xx2 = Round(xx1, 1)
+mn1 = xx2
+xx2 = 10 * xx2 / 5
+xx2 = Int(xx2)
+mn = (xx2 + 1) * 0.5
+'********************************
+If mn = 2 Then
+mn = 2.5
+End If
+'********************************
+a = mn * (z1 + z2) / 2 / Cos(β)
+a1 = Round(a, 2)
+a = Round(a1, 0)
+xx1 = mn * (z1 + z2) / 2 / a
+β = Atn((1 - (xx1) ^ 2) ^ (1 / 2) / xx1)
+d1 = mn * z1 / Cos(β)
+d2 = mn * z2 / Cos(β)
+b = φd * d1
+xx2 = Round(b, 0)
+b2 = (Round(xx2 / 5) + 1) * 5
+b1 = b2 + 5
+σH = 603 * (K * T * (u + 1) / u / b / (d1) ^ 2) ^ (1 / 2)
+If σHP1 < σHP2 Then
+xx3 = σHP1
+Else
+xx3 = σHP2
+End If
+If σH > xx3 Then
+Text12.Text = "Error！！！！！！！"
+End If
+v = 3.14 * d1 * Nn1 / 60 / 1000
+If v > 10 Then
+Text12.Text = "Error！！！！！！！"
+End If
+da1 = d1 + 5
+da2 = d2 + 5
+df1 = d1 - 6.25
+df2 = d2 - 6.25
+β1 = β * 180 / 3.14159
+β1 = Round(β1, 2)
+xx1 = Int(β1)
+xx2 = β1 - xx1
+xx2 = 60 * xx2
+xx3 = Int(xx2)
+xx2 = xx2 - xx3
+xx2 = 60 * xx2
+xx2 = Round(xx2, 0)
+βs = "β=" & xx1 & "°" & xx3 & "′" & xx2 & "″"
+clsj = "β=" & xx1 & "°" & xx3 & "′" & xx2 & "″,a=" & a & "mm,mn=" & mn & "mm,d1=" & d1 & "mm,d2=" & d2 & "mm," & vbCrLf & "z1=" & z1 & "齿,z2=" & z2 & "齿,b1=" & b1 & "mm,b2=" & b2 & "mm,da1=" & da1 & "mm,da2=" & da2 & "mm,df1=" & df1 & "mm,df2=" & df2 & "mm,i=" & u
+
+Else '按齿面接触疲劳强度设计，齿根弯曲疲劳强度校核
+z1 = 26
+xx1 = i * z1
+iz = i
+zz2 = z1 * iz
+xx1 = Round(xx1, 0)
+'两齿轮齿数应尽量互质
+xx2 = xx1 Mod 2
+If xx2 = 0 Then
+xx1 = xx1 + 1
+End If
+xx2 = xx1 Mod 13
+If xx2 = 0 Then
+xx1 = xx1 - 2
+End If
+z2 = xx1
+u = z2 / z1
+xx1 = 1 / i * Sqr((u - i) ^ 2)
+If xx1 > 0.05 Then
+Text12.Text = "Error！！！！！！！"
+End If
+φd = 1
+ZE = 189.8
+ZH = 2.5
+If σHP1 > σHP2 Then
+xx1 = σHP2
+Else
+xx1 = σHP1
+End If
+σHP = xx1
+d1 = (2 * K * T * (u + 1) * (ZH * ZE / xx1) ^ 2 / u / φd) ^ (1 / 3)
+d1 = Round(d1, 2)
+dx = d1
+xx2 = d1 / z1
+xx2 = Round(xx2, 1)
+mn1 = xx2
+mn = (Int(xx2 * 2) + 1) * 0.5
+'********************************
+If mn = 2 Then
+mn = 2.5
+End If
+'********************************
+d1 = mn * z1
+d2 = mn * z2
+b = φd * d1
+xx2 = Round(b, 0)
+b2 = (Round(xx2 / 5) + 1) * 5
+b1 = b2 + 5
+a = mn * (z1 + z2) / 2
+YFa1 = 2.6
+YSa1 = 1.6
+If z2 <= 80 Then
+YFa2 = 2.38 - 0.002 * z2
+YSa2 = 0.002 * z2 + 1.61
+Else
+If z2 > 80 And z2 <= 100 Then
+YFa2 = 2.38 - 0.002 * z2
+YSa2 = 0.001 * z2 + 1.69
+Else
+YFa2 = 2.28 - 0.001 * z2
+YSa2 = 0.002 * z2 + 1.59
+End If
+End If
+σF1 = 2 * K * T * YFa1 * YSa1 / b / mn ^ 2 / z1
+σF2 = σF1 * YFa2 * YSa2 / YFa1 / YSa1
+If σF1 > σFP1 And σF2 > σFP2 Then
+Text12.Text = "Error！！！！！！！"
+End If
+v = 3.14 * d1 * Nn1 / 60 / 1000
+If v > 5 Then
+Text12.Text = "Error！！！！！！！"
+End If
+da1 = d1 + 5
+da2 = d2 + 5
+df1 = d1 - 6.25
+df2 = d2 - 6.25
+β = 0
+clsj = "a=" & a & "mm,mn=" & mn & ",d1=" & d1 & "mm,d2=" & d2 & "mm,z1=" & z1 & "齿,z2=" & z2 & "齿," & vbCrLf & "b1=" & b1 & "mm,b2=" & b2 & "mm,da1=" & da1 & "mm,da2=" & da2 & "mm,df1=" & df1 & "mm,df2=" & df2 & "mm,i=" & u
+End If
+End If
+Nj2 = Round(Nj2, 0)
+Text12.Text = clsj
+
+'三、轴的设计与校核
+Dim σ11b1%, σ11b2%, C1%, C2%, σ0b1%, σ0b2%, σ1b1%, σ1b2%
+Dim l11%, l21%, l31%, l41%, l51%, l61%, l71%, l12%, l22%, l32%, l42%, l52%, l62%, l72%, L1%, L2%
+Dim dmin1!, dmin2!, dmax1%, dmax2%, d11%, d21%, d31%, d41%, d51%, d61%, d71%, d12%, d22%, d32%, d42%, d52%, d62%, d72%
+Dim J1$, J2$, J3$, bj1%, hj1%, bj2%, hj2%, bj3%, hj3%, lj1%, lj2%, lj3%
+'初步选择轴的材料
+'**两轴均选用45钢，调质，硬度217-255HBW
+cdzm = "一般用途减速器，两轴均选用45钢，调质，硬度217-255HBW。由表11-1查得，许用弯曲应力[σ-1b]=59MPa。由表11-2选C=109"
+cdzm1 = 0
+cdzm2 = 0
+dmax1 = 200
+σ11b1 = 59
+σ0b1 = 98
+σ1b1 = 196
+C1 = 109
+dmax2 = 200
+σ11b2 = 59
+σ0b2 = 98
+σ1b2 = 196
+C2 = 109
+'根据扭转强度条件确定最小直径
+dmin1 = C1 * (P1 / Nn1) ^ (1 / 3)
+dmin2 = C2 * (P2 / Nn2) ^ (1 / 3)
+dmina1 = dmin1
+dmina2 = dmin2
+dmin1 = 1.05 * dmin1
+dmin2 = 1.05 * dmin2
+dminb1 = dmin1
+dminb2 = dmin2
+'根据联轴器型号确定合适轴径
+Dim lzqL%
+xx1 = d1 - dmin1
+If xx1 < 15 Then
+Text13.Text = "Error！！！！！！！"
+End If
+Dim Tc!, KA!
+KA = 1.3
+Tc = KA * T1
+Tx1 = T1
+Tc1 = Tc
+If dmin1 < 25 And Tc <= 224 Then
+lzq1 = "GY4型联轴器"
+lzqL = 62
+d11 = 25
+bj1 = 8
+hj1 = 7
+ElseIf dmin1 < 30 And Tc <= 400 Then
+lzq1 = "GY5型联轴器"
+lzqL = 82
+d11 = 30
+bj1 = 10
+hj1 = 8
+ElseIf dmin1 < 35 And Tc <= 400 Then
+lzq1 = "GY5型联轴器"
+lzqL = 82
+d11 = 35
+bj1 = 10
+hj1 = 8
+ElseIf dmin1 < 38 And Tc <= 900 Then
+lzq1 = "GY6型联轴器"
+lzqL = 82
+d11 = 38
+bj1 = 10
+hj1 = 8
+ElseIf dmin1 < 40 And Tc <= 900 Then
+lzq1 = "GYS6型联轴器"
+lzqL = 112
+d11 = 40
+bj1 = 12
+hj1 = 8
+ElseIf dmin1 < 45 And Tc <= 900 Then
+lzq1 = "GYS6型联轴器"
+lzqL = 112
+d11 = 45
+bj1 = 14
+hj1 = 9
+ElseIf dmin1 < 50 And Tc <= 1600 Then
+lzq1 = "GY7型联轴器"
+lzqL = 112
+d11 = 50
+bj1 = 16
+hj1 = 10
+ElseIf dmin1 < 55 And Tc <= 1600 Then
+lzq1 = "GY7型联轴器"
+lzqL = 112
+d11 = 55
+bj1 = 16
+hj1 = 10
+ElseIf dmin1 < 60 And Tc <= 3150 Then
+lzq1 = "GY8型联轴器"
+lzqL = 142
+d11 = 60
+bj1 = 18
+hj1 = 11
+ElseIf dmin1 < 65 And Tc <= 3150 Then
+lzq1 = "GY8型联轴器"
+lzqL = 142
+d11 = 65
+bj1 = 20
+hj1 = 12
+ElseIf dmin1 < 70 And Tc <= 3150 Then
+lzq1 = "GY8型联轴器"
+lzqL = 142
+d11 = 70
+bj1 = 20
+hj1 = 12
+ElseIf dmin1 <= 75 And Tc <= 6300 Then
+lzq1 = "GY9型联轴器"
+lzqL = 142
+d11 = 75
+bj1 = 20
+hj1 = 12
+Else
+lzq1 = "Error！！！！！！！"
+d11 = 0
+End If
+xx1 = lzqL
+lzqLx1 = lzqL
+Tc = KA * T2
+Tx2 = T2
+Tc2 = Tc
+If dmin2 < 25 And Tc <= 224 Then
+lzq2 = "GY4型联轴器"
+lzqL = 62
+d12 = 25
+bj2 = 8
+hj2 = 7
+ElseIf dmin2 < 30 And Tc <= 400 Then
+lzq2 = "GY5型联轴器"
+lzqL = 82
+d12 = 30
+bj2 = 10
+hj2 = 8
+ElseIf dmin2 < 35 And Tc <= 400 Then
+lzq2 = "GY5型联轴器"
+lzqL = 82
+d12 = 35
+bj2 = 10
+hj2 = 8
+ElseIf dmin2 < 38 And Tc <= 900 Then
+lzq2 = "GY6型联轴器"
+lzqL = 82
+d12 = 38
+bj2 = 10
+hj2 = 8
+ElseIf dmin2 < 40 And Tc <= 900 Then
+lzq2 = "GYS6型联轴器"
+lzqL = 112
+d12 = 40
+bj2 = 12
+hj2 = 8
+ElseIf dmin2 < 45 And Tc <= 900 Then
+lzq2 = "GYS6型联轴器"
+lzqL = 112
+d12 = 45
+bj2 = 14
+hj2 = 9
+ElseIf dmin2 < 50 And Tc <= 1600 Then
+lzq2 = "GY7型联轴器"
+lzqL = 112
+d12 = 50
+bj2 = 16
+hj2 = 10
+ElseIf dmin2 < 55 And Tc <= 1600 Then
+lzq2 = "GY7型联轴器"
+lzqL = 112
+d12 = 55
+bj2 = 16
+hj2 = 10
+ElseIf dmin2 < 60 And Tc <= 3150 Then
+lzq2 = "GY8型联轴器"
+lzqL = 142
+d12 = 60
+bj2 = 18
+hj2 = 11
+ElseIf dmin2 < 65 And Tc <= 3150 Then
+lzq2 = "GY8型联轴器"
+d12 = 65
+lzqL = 142
+bj2 = 20
+hj2 = 12
+ElseIf dmin2 < 70 And Tc <= 3150 Then
+lzq2 = "GY8型联轴器"
+lzqL = 142
+d12 = 70
+bj2 = 20
+hj2 = 12
+ElseIf dmin2 <= 75 And Tc <= 6300 Then
+lzq2 = "GY9型联轴器"
+lzqL = 142
+d12 = 75
+bj2 = 22
+hj2 = 14
+Text13.Text = "Error！！！！！！！"
+End If
+xx2 = lzqL
+lzqLx2 = lzqL
+Dim Δ1%, Δ2%, Δ3%
+Δ1 = 5
+Δ2 = 15
+Δ3 = 15
+
+'1. 低速轴的设计
+Dim h12!, h22! 'h12，h22分别为定位轴肩高度
+Dim Cr1!, Cr2!, C0r1!, C0r2!
+l12 = xx2 - 2
+d22 = d12 + 10
+l22 = 60
+d32 = 5 * (Int(d22 / 5) + 1)
+zcd2 = d32
+xx3 = d32 / 5
+If zxry = 2 Then '斜齿轮且7000AC轴承
+  If xx3 < 10 Then
+  zc2 = "730" & xx3 & "AC"
+  Else
+  zc2 = "73" & xx3 & "AC"
+  End If
+zcwd2 = 10 * xx3 + 10
+zcB2 = 2 * xx3 + 7
+  If xx3 = 9 Then
+  Cr2 = 47.5
+  C0r2 = 37.2
+  ElseIf xx3 = 10 Then
+  Cr2 = 55.5
+  C0r2 = 44.5
+  ElseIf xx3 = 11 Then
+  Cr2 = 67.2
+  C0r2 = 56.8
+  ElseIf xx3 = 12 Then
+  Cr2 = 77.8
+  C0r2 = 65.8
+  ElseIf xx3 = 13 Then
+  Cr2 = 89.8
+  C0r2 = 75.5
+  ElseIf xx3 = 14 Then
+  Cr2 = 98.5
+  C0r2 = 86
+  ElseIf xx3 = 15 Then
+  Cr2 = 108
+  C0r2 = 97
+  ElseIf xx3 = 16 Then
+  Cr2 = 118
+  C0r2 = 108
+  End If
+Else '直齿轮且6000轴承
+  If xx3 < 10 Then
+  zc2 = "630" & xx3
+  Else
+  zc2 = "63" & xx3
+  End If
+  If d32 = 40 Then
+  zcwd2 = 90
+  zcB2 = 23
+  ElseIf d32 = 45 Then
+  zcwd2 = 100
+  zcB2 = 25
+  Cr2 = 52.8
+  C0r2 = 31.8
+  ElseIf d32 = 50 Then
+  zcwd2 = 110
+  zcB2 = 27
+  Cr2 = 61.8
+  C0r2 = 38
+  ElseIf d32 = 55 Then
+  zcwd2 = 120
+  zcB2 = 29
+  Cr2 = 71.5
+  C0r2 = 44.8
+  ElseIf d32 = 60 Then
+  zcwd2 = 130
+  zcB2 = 31
+  Cr2 = 81.8
+  C0r2 = 51.8
+  ElseIf d32 = 65 Then
+  zcwd2 = 140
+  zcB2 = 33
+  Cr2 = 93.8
+  C0r2 = 60.5
+  ElseIf d32 = 70 Then
+  zcwd2 = 150
+  zcB2 = 35
+  Cr2 = 105
+  C0r2 = 68
+  Else
+  Text13.Text = "Error！！！！！！！"
+  End If
+End If
+l32 = zcB2 + Δ3 + Δ2 + 3
+d42 = d32 + 5
+l42 = b2 - 3
+If d42 <= 38 Then
+bj3 = 10
+hj3 = 8
+ElseIf d42 = 40 Then
+bj3 = 12
+hj3 = 8
+ElseIf d42 = 45 Then
+bj3 = 14
+hj3 = 9
+ElseIf d42 = 50 Then
+bj3 = 16
+hj3 = 10
+ElseIf d42 = 55 Then
+bj3 = 16
+hj3 = 10
+ElseIf d42 = 60 Then
+bj3 = 18
+hj3 = 11
+ElseIf d42 = 65 Then
+bj3 = 20
+hj3 = 12
+ElseIf d42 = 70 Then
+bj3 = 20
+hj3 = 12
+ElseIf d42 = 75 Then
+bj3 = 22
+hj3 = 14
+ElseIf d42 = 80 Then
+bj3 = 22
+hj3 = 14
+ElseIf d42 = 85 Then
+bj3 = 25
+hj3 = 14
+ElseIf d42 = 90 Then
+bj3 = 25
+hj3 = 14
+ElseIf d42 = 95 Then
+bj3 = 28
+hj3 = 16
+ElseIf d42 = 100 Then
+bj3 = 28
+hj3 = 16
+ElseIf d42 = 105 Then
+bj3 = 28
+hj3 = 16
+ElseIf d42 = 110 Then
+bj3 = 32
+hj3 = 18
+ElseIf d42 = 115 Then
+bj3 = 32
+hj3 = 18
+ElseIf d42 = 120 Then
+bj3 = 32
+hj3 = 18
+ElseIf d42 = 125 Then
+bj3 = 32
+hj3 = 18
+Else
+bj3 = 0
+hj3 = 0
+End If
+h12 = d42 * 0.1
+h12 = Round(h12, 1)
+d52 = d42 + 2 * h12
+d52 = Int(d52 / 5) * 5
+l52 = 10
+d72 = d32
+l72 = zcB2 + 2
+h22 = (zcwd2 - zcd2) / 9
+h22 = Round(h22, 0) - 1
+d62 = d72 + 2 * h22
+l62 = Δ3 + Δ2 - l52
+cdz = "低速轴参数：①" & d12 & "*" & l12 & "mm, ②" & d22 & "*" & l22 & "mm, ③" & d32 & "*" & l32 & "mm, ④" & d42 & "*" & l42 & "mm, ⑤" & d52 & "*" & l52 & "mm, ⑥" & d62 & "*" & l62 & "mm, ⑦" & d72 & "*" & l72 & "mm"
+
+
+'2. 齿轮轴的设计
+Dim h11!, h21! 'h11，h21分别为定位轴肩高度
+l11 = xx1 - 2
+h11 = d11 * 0.07
+h11 = Round(h11, 1)
+d21 = d11 + 2 * h11
+d21 = d11 + 5
+l21 = 60
+d31 = 5 * (Int(d21 / 5) + 1)
+zcd1 = d31
+xx3 = d31 / 5
+If zxry = 2 Then '斜齿轮且7000AC轴承
+  If xx3 < 10 Then
+  zc1 = "730" & xx3 & "AC"
+  Else
+  zc1 = "73" & xx3 & "AC"
+  End If
+zcwd1 = 10 * xx3 + 10
+zcB1 = 2 * xx3 + 7
+  If xx3 = 7 Then
+  Cr1 = 32.8
+  C0r1 = 24.8
+  ElseIf xx3 = 8 Then
+  Cr1 = 38.5
+  C0r1 = 30.5
+  ElseIf xx3 = 9 Then
+  Cr1 = 47.5
+  C0r1 = 37.2
+  ElseIf xx3 = 10 Then
+  Cr1 = 55.5
+  C0r1 = 44.5
+  ElseIf xx3 = 11 Then
+  Cr1 = 67.2
+  C0r1 = 56.8
+  ElseIf xx3 = 12 Then
+  Cr1 = 77.8
+  C0r1 = 65.8
+  ElseIf xx3 = 13 Then
+  Cr1 = 89.8
+  C0r1 = 75.5
+  ElseIf xx3 = 14 Then
+  Cr1 = 98.5
+  C0r1 = 86
+  ElseIf xx3 = 15 Then
+  Cr1 = 108
+  C0r1 = 97
+  ElseIf xx3 = 16 Then
+  Cr1 = 118
+  C0r1 = 108
+  End If
+Else '直齿轮且6000轴承
+  If xx3 < 10 Then
+  zc1 = "630" & xx3
+  Else
+  zc1 = "63" & xx3
+  End If
+  If d31 = 35 Then
+  zcwd1 = 80
+  zcB1 = 21
+  Cr1 = 33.2
+  C0r1 = 19.2
+  ElseIf d31 = 40 Then
+  zcwd1 = 90
+  zcB1 = 23
+  Cr1 = 40.8
+  C0r1 = 24
+  ElseIf d31 = 45 Then
+  zcwd1 = 100
+  zcB1 = 25
+  Cr1 = 52.8
+  C0r1 = 31.8
+  ElseIf d31 = 50 Then
+  zcwd1 = 110
+  zcB1 = 27
+  Cr1 = 61.8
+  C0r1 = 38
+  ElseIf d31 = 55 Then
+  zcwd1 = 120
+  zcB1 = 29
+  Cr1 = 71.5
+  C0r1 = 44.8
+  ElseIf d31 = 60 Then
+  zcwd1 = 130
+  zcB1 = 31
+  Cr1 = 81.8
+  C0r1 = 51.8
+  ElseIf d31 = 65 Then
+  zcwd1 = 140
+  zcB1 = 33
+  Cr1 = 93.8
+  C0r1 = 60.5
+  ElseIf d31 = 70 Then
+  zcwd1 = 150
+  zcB1 = 35
+  Cr1 = 105
+  C0r1 = 68
+  Else
+  Text13.Text = "Error！！！！！！！"
+  End If
+End If
+l31 = zcB1 + 2
+h21 = (zcwd1 - zcd1) / 2 / 3 / 2
+h21 = Round(h21, 1) - 1
+If d1 - d31 <= 12 Then
+d41 = d31 + 2 * h21
+Else
+d41 = d31 + 5
+End If
+l41 = Δ2 + Δ3 - 5 / 2
+d51 = d1
+l51 = b1
+d61 = d41
+l61 = l41
+d71 = d31
+l71 = l31
+cdz = "齿轮轴参数：①" & d11 & "*" & l11 & "mm, ②" & d21 & "*" & l21 & "mm, ③" & d31 & "*" & l31 & "mm, ④" & d41 & "*" & l41 & "mm, ⑤" & d51 & "*" & l51 & "mm(实际上是齿轮部分), ⑥" & d61 & "*" & l61 & "mm, ⑦" & d71 & "*" & l71 & "mm; " & cdz
+Text13.Text = cdz
+'3. 轴的受力分析与校核
+Dim Fτ1!, Fτ2!, Fr1!, Fr2!, Fa1!, Fa2!, αn!, Fv11!, Fv21!, Fv12!, Fv22!, Mv11!, Mv21!, Mv12!, Mv22!, FH11!, FH21!, FH12!, FH22!, MH1!, MH2!, Mc11!, Mc21!, Mc12!, Mc22!
+Dim α!, Mec11!, Mec21!, Mec12!, Mec22!, σec1!, σec2!, σem1!, σem2!, Mem1!, Mem2!
+Dim σp11!, σp12!, σp22!
+Dim X! '作为矩-距离的自变量
+zcL1 = zcB1 / 2 + l51 / 2 + l61
+zcL2 = zcB2 / 2 + b2 / 2 + l52 + l62
+αn = 3.14159 / 9
+α = 0.6 '*****扭切应力为脉动循环变应力，取折合系数α=0.6
+'低速轴受力分析与校核
+'(1)轴上受力分析
+T2 = T2 * 1000 '单位转变为N*mm
+Fτ2 = 2 * T2 / d2 '圆周力
+Fr2 = Fτ2 * Tan(αn) / Cos(β) '径向力
+Fa2 = Fτ2 * Tan(β) '轴向力
+'(2)垂直面上的支座反力
+Fv12 = 0.5 * Fr2 - Fa2 * d2 / 4 / zcL2
+Fv22 = Fr2 - Fv12
+'(3)垂直面的弯矩
+Mv12 = Fv12 * zcL2
+Mv22 = Fv12 * zcL2 + Fa2 * d2 / 2
+'(4)水平面支座反力
+FH12 = Fτ2 / 2
+FH22 = Fτ2 - FH12
+'(5)水平面弯矩
+MH2 = FH12 * zcL2
+'(6)合成弯矩
+Mc12 = Sqr(MH2 ^ 2 + Mv12 ^ 2)
+Mc22 = Sqr(MH2 ^ 2 + Mv22 ^ 2)
+'(7)扭矩
+T2 = T2
+'(8)危险截面的当量弯矩
+Mec12 = Mc12
+Mec22 = Sqr(Mc22 ^ 2 + (α * T2) ^ 2)
+'(9)判断危险截面并判断强度
+'①剖面C-C为危险截面
+σec2 = Mec22 / 0.1 / d42 ^ 3
+'②剖面M-M为危险截面
+Mem2 = α * T2
+σem2 = Mem2 / 0.1 / d12 ^ 3
+If σec2 < σ11b2 And σem2 < σ11b2 Then
+X = 2 * zcL2
+cdz2 = "低速轴校核参数： 在x=" & zcL2 & "mm处, 垂直弯矩Mv：" & Mv12 & "N*mm, " & Mv22 & "N*mm, 水平弯矩MH：" & MH2 & "N*mm, 合成弯矩Mc：" & Mc12 & "N*mm, " & Mc22 & "N*mm, 扭矩T：" & T2 & "N*mm, 当量弯矩Me：" & Mec12 & "N*mm, " & Mec22 & "N*mm, 在x=" & X & "mm处,当量弯矩Me：" & Mem2 & "N*mm"
+Else
+cdz2 = 1
+End If
+'齿轮轴受力分析与校核
+'(1)轴上受力分析
+T1 = T1 * 1000 '单位转换为N*mm
+Fτ1 = 2 * T1 / d1 '圆周力
+Fr1 = Fτ1 * Tan(αn) / Cos(β) '径向力
+Fa1 = Fτ1 * Tan(β) '轴向力
+'(2)垂直面上的支座反力
+Fv11 = 0.5 * Fr1 - Fa1 * d1 / 4 / zcL1
+Fv21 = Fr1 - Fv11
+'(3)垂直面的弯矩
+Mv11 = Fv11 * zcL1
+Mv21 = Fv11 * zcL1 + Fa1 * d1 / 2
+'(4)水平面支座反力
+FH11 = Fτ1 / 2
+FH21 = Fτ1 - FH12
+'(5)水平面弯矩
+MH1 = FH11 * zcL1
+'(6)合成弯矩
+Mc11 = Sqr(MH1 ^ 2 + Mv11 ^ 2)
+Mc21 = Sqr(MH1 ^ 2 + Mv21 ^ 2)
+'(7)扭矩
+T1 = T1
+'(8)危险截面的当量弯矩
+Mec11 = Mc11
+Mec21 = Sqr(Mc21 ^ 2 + (α * T1) ^ 2)
+'(9)判断危险截面并判断强度
+'①剖面C-C为危险截面
+σec1 = Mec21 / 0.1 / d51 ^ 3
+'②剖面M-M为危险截面
+Mem1 = α * T1
+σem1 = Mem1 / 0.1 / d11 ^ 3
+If σec1 < σ11b1 And σem1 < σ11b1 Then
+X = 2 * zcL1
+cdz1 = "齿轮轴校核参数： 在x=" & zcL1 & "mm处, 垂直弯矩Mv：" & Mv11 & "N*mm, " & Mv21 & "N*mm, 水平弯矩MH：" & MH1 & "N*mm, 合成弯矩Mc：" & Mc11 & "N*mm, " & Mc21 & "N*mm, 扭矩T：" & T1 & "N*mm, 当量弯矩Me：" & Mec11 & "N*mm, " & Mec21 & "N*mm, 在x=" & X & "mm处,当量弯矩Me：" & Mem1 & "N*mm"
+Else
+cdz1 = 1
+MsgBox ("轴校核失败！")
+End If
+If cdz1 = "1" Then
+Text16.Text = "Error！！！！！！！"
+ElseIf cdz2 = "1" Then
+Text16.Text = "Error！！！！！！！"
+Else
+Text16.Text = "强度合格！" & cdz1 & "---" & cdz2
+End If
+'4. 轴的结构工艺性设计--周向固定
+Dim k1!, k2!, k3!, hy1!, hy2!, hy3!, σj%, σj1!, σj2!, σj3!
+σj = 110
+'联轴器的键选择C型键
+'齿轮键选择B型键
+lj1 = 50
+If d12 > 50 Then
+lj2 = 80
+Else
+lj2 = 70
+End If
+lj3 = 45
+k1 = lj1 - bj1 / 2
+k2 = lj2 - bj2 / 2
+k3 = lj3
+hy1 = 0.5 * hj1
+hy2 = 0.5 * hj2
+hy3 = 0.5 * hj3
+σj1 = 2 * T1 / k1 / hy1 / d11
+σj2 = 2 * T2 / k2 / hy2 / d12
+σj3 = 2 * T2 / k3 / hy3 / d42
+If σj1 < σj And σj2 < σj And σj3 < σj Then
+J1 = "b*h=" & bj1 & "*" & hj1 & "mm, l=" & lj1 & "mm"
+J2 = "b*h=" & bj2 & "*" & hj2 & "mm, l=" & lj2 & "mm"
+J3 = "b*h=" & bj3 & "*" & hj3 & "mm, l=" & lj3 & "mm"
+jj = "齿轮轴联轴器C型键：" & J1 & ", 低速轴联轴器C型键：" & J2 & ", 齿轮B型键：" & J3
+Else
+J1 = "Error！！！！！！！"
+J2 = "Error！！！！！！！"
+J3 = "Error！！！！！！！"
+jj = "Error！！！！！！！"
+MsgBox ("键校核失败！")
+End If
+
+'联轴器、键、轴承的型号参数
+Dim Fr11!, Fr12!, Fr21!, Fr22!, Fs11!, Fs21!, Fs12!, Fs22!, Fa11!, Fa21!, Fa12!, Fa22!, X11!, Y11!, X21!, Y21!, X12!, Y12!, X22!, Y22!, Lh1!, Lh2!, fp!, ft!, P11!, P21!, P12!, P22!
+Dim e!
+fp = 1.05
+ft = 1
+If zxry = 2 Then '按70000AC进行校核计算
+e = 0.68
+Fr11 = Sqr(FH11 ^ 2 + Fv11 ^ 2)
+Fr21 = Sqr(FH21 ^ 2 + Fv21 ^ 2)
+Fr12 = Sqr(FH12 ^ 2 + Fv12 ^ 2)
+Fr22 = Sqr(FH22 ^ 2 + Fv22 ^ 2)
+'轴承内部轴向力
+Fs11 = 0.68 * Fr11
+Fs12 = 0.68 * Fr12
+Fs21 = 0.68 * Fr21
+Fs22 = 0.68 * Fr22
+'计算轴承轴向载荷
+xx1 = Fa1 + Fs11
+xx2 = Fs12
+  If xx1 > xx2 Then
+  Fa11 = Fs11
+  Fa21 = Fs11 + Fa1
+  Else
+  Fa11 = Fs21 - Fa1
+  Fa21 = Fs21
+  End If
+xx1 = Fa2 + Fs12
+xx2 = Fs22
+  If xx1 > xx2 Then
+  Fa12 = Fs12
+  Fa22 = Fs12 + Fa2
+  Else
+  Fa12 = Fs22 - Fa2
+  Fa22 = Fs22
+  End If
+xx3 = Fa11 / Fr11
+  If xx3 > e Then
+  X11 = 0.41
+  Y11 = 0.87
+  Else
+  X11 = 1
+  Y11 = 0
+  End If
+xx3 = Fa21 / Fr21
+  If xx3 > e Then
+  X21 = 0.41
+  Y21 = 0.87
+  Else
+  X21 = 1
+  Y21 = 0
+  End If
+xx3 = Fa12 / Fr12
+  If xx3 > e Then
+  X12 = 0.41
+  Y12 = 0.87
+  Else
+  X12 = 1
+  Y12 = 0
+  End If
+xx3 = Fa22 / Fr22
+  If xx3 > e Then
+  X22 = 0.41
+  Y22 = 0.87
+  Else
+  X22 = 1
+  Y22 = 0
+  End If
+P11 = fp * (X11 * Fr11 + Y11 * Fa11)
+P21 = fp * (X21 * Fr21 + Y21 * Fa21)
+P12 = fp * (X12 * Fr12 + Y12 * Fa12)
+P22 = fp * (X12 * Fr12 + Y12 * Fa12)
+  If P11 > P21 Then
+  xx1 = P11
+  Else
+  xx1 = P21
+  End If
+  If P12 > P22 Then
+  xx2 = P12
+  Else
+  xx2 = P22
+  End If
+Lh1 = 10 ^ 6 / 60 / Nn1 * (ft * Cr1 * 10 ^ 3 / xx1) ^ 3
+Lh2 = 10 ^ 6 / 60 / Nn1 * i * (ft * Cr2 * 10 ^ 3 / xx2) ^ 3
+Dim year1!, year2!
+year1 = Lh1 / (Day * bz * 8)
+year2 = Lh2 / (Day * bz * 8)
+year1 = Int(year1)
+year2 = Int(year2)
+  If year1 >= 10 Then
+  zcy1 = "无！"
+  ElseIf year1 >= 5 Then
+  zcy1 = "齿轮轴轴承每5年一更换！"
+  ElseIf year1 >= 1 Then
+  zcy1 = "齿轮轴轴承每" & year1 & "年一更换！"
+  Else
+  zcy1 = "Error！！！！！！！"
+  MsgBox ("轴承校核失败！")
+  End If
+  If year2 >= 10 Then
+  zcy2 = "无！"
+  ElseIf year2 >= 5 Then
+  zcy2 = "低速轴轴承每5年一更换！"
+  ElseIf year2 >= 1 Then
+  zcy2 = "低速轴轴承每" & year2 & "年一更换！"
+  Else
+  zcy2 = "Error！！！！！！！"
+  MsgBox ("轴承校核失败！")
+  End If
+
+Else '按6000进行校核计算
+Fr11 = Sqr(FH11 ^ 2 + Fv11 ^ 2)
+Fr21 = Sqr(FH21 ^ 2 + Fv21 ^ 2)
+Fr12 = Sqr(FH12 ^ 2 + Fv12 ^ 2)
+Fr22 = Sqr(FH22 ^ 2 + Fv22 ^ 2)
+'由于几乎无轴向力****************************************************
+'Fa11 = C0r1 * 0.014
+'Fa22 = C0r2 * 0.014
+Fa11 = 0
+Fa22 = 0
+'e = 0.19
+'xx1 = Fa11 / Fr11
+'xx2 = Fa22 / Fr22
+'If xx1 > e Then
+X11 = 0.56
+Y11 = 2.3
+'Else
+'X11 = 0
+'Y11 = 1
+'End If
+'If xx2 > e Then
+X22 = 0.56
+Y22 = 2.3
+'Else
+'X22 = 0
+'Y22 = 1
+'End If**************************************************************
+P11 = fp * (X11 * Fr11 + Y11 * Fa11)
+P22 = fp * (X22 * Fr22 + Y22 * Fa22)
+Lh1 = 10 ^ 6 / 60 / Nn1 * (ft * Cr1 * 10 ^ 3 / P11) ^ 3
+Lh2 = 10 ^ 6 / 60 / Nn1 * i * (ft * Cr2 * 10 ^ 3 / P22) ^ 3
+year1 = Lh1 / (Day * bz * 8)
+year2 = Lh2 / (Day * bz * 8)
+year1 = Int(year1)
+year2 = Int(year2)
+  If year1 >= 10 Then
+  zcy1 = "无！"
+  ElseIf year1 >= 5 Then
+  zcy1 = "齿轮轴轴承每5年一更换！"
+  ElseIf year1 >= 1 Then
+  zcy1 = "齿轮轴轴承每" & year1 & "年一更换！"
+  Else
+  zcy1 = "Error！！！！！！！"
+  MsgBox ("轴承校核失败！")
+  End If
+  If year2 >= 10 Then
+  zcy2 = "无！"
+  ElseIf year2 >= 5 Then
+  zcy2 = "低速轴轴承每5年一更换！"
+  ElseIf year2 >= 1 Then
+  zcy2 = "低速轴轴承每" & year2 & "年一更换！"
+  Else
+  zcy2 = "Error！！！！！！！"
+  MsgBox ("轴承校核失败！")
+  End If
+End If
+Text14.Text = "联轴器①：" & lzq1 & "; 联轴器②：" & lzq2 & "; " & jj
+Text15.Text = "轴承①：" & zc1 & ", 使用要求：" & zcy1 & "轴承②：" & zc2 & ", 使用要求：" & zcy2 & "具体参数：轴承①：外径D=" & zcwd1 & "mm,内径d=" & zcd1 & "mm,宽B=" & zcB1 & "mm; 轴承②：外径D=" & zcwd2 & "mm,内径d=" & zcd2 & "mm,宽B=" & zcB2 & "mm"
+xx1 = 3 * n
+xx2 = 5 * n
+ss1 = "Pw=" & Pw & "kw, Pd=" & Pd & "kw, nd=" & xx1 & "-" & xx2 & "r/min"
+If clm1 = "0" And clm2 = "0" Then
+clm = clm
+Else
+clm = clm1 & "," & clm2 & ",满足小轮比大轮高30-50HBW"
+End If
+If ss2 = "1" Then
+ss2 = "查表7-8得σHlim=1500MPa，得σHlim1=σHlim2=1500MPa；" & vbCrLf & "查得σFlim=461MPa,得σFlim1=σFlim2=461MPa，" & vbCrLf & "σFE1=σFE2=σFlim1*Yst=461*2=922MPa；" & vbCrLf & "由表7-9查得SH=1.05，SF=1.25；" & vbCrLf & "由式(7-29)计算应力循环次数N1=" & Nj1 & "，N2=" & Nj2 & vbCrLf & "由图7.26查得ZN1=" & ZN1 & ",ZN2=" & ZN2 & ";由图7.27查得YN1=" & YN1 & ",YN2=" & YN2 & vbCrLf & "由式(7-28)得σHP1=" & σHP1 & "MPa,σHP2=" & σHP2 & "MPa，σFP1=" & σFP1 & "MPa,σFP2=" & σFP2 & "MPa;" & vbCrLf & "因为是普通减速器，查表7-10选8级精度；"
+ElseIf ss2 = "2" Then
+ss2 = "由表7-8查得调质合金钢σHlim=1.313x+373；带入大小轮硬度数据得小齿轮σHlim1=" & σHlim1 & "MPa,大齿轮σHlim2=" & σHlim2 & "MPa;" & vbCrLf & "同理查得调质合金钢σFlim=0.425x+187，得小齿轮σFlim1=" & σFlim1 & "MPa,大齿轮σFlim2=" & σFlim2 & "MPa;则σFE1=" & σFE1 & "MPa,σFE2=" & σFE2 & "MPa;" & vbCrLf & "由表7-9查得SH=1.05，SF=1.25；" & vbCrLf & "由式(7-29)计算应力循环次数N1=" & Nj1 & "，N2=" & Nj2 & vbCrLf & "由图7.26查得ZN1=" & ZN1 & ",ZN2=" & ZN2 & ";由图7.27查得YN1=" & YN1 & ",YN2=" & YN2 & vbCrLf & "由式(7-28)得σHP1=" & σHP1 & "MPa,σHP2=" & σHP2 & "MPa，σFP1=" & σFP1 & "MPa,σFP2=" & σFP2 & "MPa;" & vbCrLf & "因为是普通减速器，查表7-10选8级精度；"
+ElseIf ss2 = "3" Then
+ss2 = "由表7-8查得调质合金钢σHlim=1.313x+373；调质碳钢σHlim=0.925x+360；" & vbCrLf & "带入大小轮硬度数据得小齿轮σHlim1=" & σHlim1 & "MPa,大齿轮σHlim2=" & σHlim2 & "MPa;" & vbCrLf & "同理查得调质合金钢σFlim=0.425x+187，调质碳钢σFlim=0.24x+163,得小齿轮σFlim1=" & σFlim1 & "MPa,大齿轮σFlim2=" & σFlim2 & "MPa;" & vbCrLf & "则σFE1=" & σFE1 & "MPa,σFE2=" & σFE2 & "MPa;" & vbCrLf & "由表7-9查得SH=1.05，SF=1.25；" & vbCrLf & "由式(7-29)计算应力循环次数N1=" & Nj1 & "，N2=" & Nj2 & vbCrLf & "由图7.26查得ZN1=" & ZN1 & ",ZN2=" & ZN2 & ";由图7.27查得YN1=" & YN1 & ",YN2=" & YN2 & vbCrLf & "由式(7-28)得σHP1=" & σHP1 & "MPa,σHP2=" & σHP2 & "MPa，σFP1=" & σFP1 & "MPa,σFP2=" & σFP2 & "MPa;" & vbCrLf & "因为是普通减速器，查表7-10选8级精度；"
+End If
+
+If zxry = 2 Then '斜齿轮，角接触球轴承
+ss2 = ss2 & vbCrLf & "由于为闭式齿轮传动，按齿根弯曲疲劳强度设计，齿面接触疲劳强度校核。" & vbCrLf & vbCrLf & "3.2 按齿根弯曲疲劳强度设计" & vbCrLf & "①转矩T=" & T & "N*mm" & vbCrLf & "②载荷系数查表7-4得K=1.05" & vbCrLf & "③选择齿数和齿宽系数" & vbCrLf & "取小齿轮齿数z1=23，则z2=i*z1=" & iz & "*" & z1 & "=" & zz2 & ", 圆整后齿数应尽量互质取z2=" & z2 & vbCrLf & "则实际传动比i'=" & i & "，且传动比误差小于±5%,得u=" & i & vbCrLf & "由表7-6，按硬齿面对称布置查得φd=0.8" & vbCrLf & "④齿形系数和应力修正系数" & vbCrLf & "初选螺旋角β=15°, zv1=z1/cos^3β=" & zv1 & ",zv2=z2/cos^3β=" & zv2 & vbCrLf & "由表7-7按zv插值查得YFa1=" & YFa1 & ",YFa2=" & YFa2 & ",YSa1=" & YSa1 & ",YSa2=" & YSa2 & vbCrLf & "⑤按设计公式计算" & vbCrLf & "X=YFa*YSa/σFP,取其中X1,X2大数,按设计公式计算,取Yβ=0.87，Yε=0.82" & vbCrLf
+ss2 = ss2 & "mn≥" & mn1 & "mm。按表7-1取标准模数mn=" & mn & "mm" & vbCrLf & vbCrLf & "3.3 计算齿轮传动的主要几何尺寸" & vbCrLf & "中心距a=" & a1 & "mm,圆整中心距得a=" & a & "mm" & vbCrLf & "按上述公式计算得到以下参数：" & vbCrLf & "螺旋角" & βs & ",d1=" & d1 & "mm,d2=" & d2 & "mm" & vbCrLf & "b = " & b & "mm,所以取b2=" & b2 & "mm,取b1=" & b1 & "mm" & vbCrLf & vbCrLf & "3.4 按齿面接触疲劳强度校核" & vbCrLf & "按以上公式计算得σH=" & σH & "MPa, 同时满足两齿面接触疲劳强度要求！" & vbCrLf & vbCrLf & "3.5 验算圆周速度" & vbCrLf & "圆周速度v=" & v & "m/s<10m/s,对照表7-10可知选8级精度是合适的。"
+ss2 = ss2 & vbCrLf & vbCrLf & "3.6 齿轮传动参数" & vbCrLf & Text12.Text
+ss3 = "4.1.1 选择轴的材料" & vbCrLf & cdzm & vbCrLf & vbCrLf & "4.1.2 拟定轴上装配方案" & vbCrLf & vbCrLf & "4.1.3 轴的结构尺寸设计" & vbCrLf & "低速轴输入功率P2=" & P2 & "kw,输出功率P2'=P2*η1=" & P2 & "*0.99=" & P2x & "kw" & vbCrLf & "低速轴转速n=" & Nn2 & "r/min" & vbCrLf & "根据式(11-2)，得轴的最小直径dmin=" & dmina2 & "mm,轴端装有联轴器，轴颈增加5%，得dmin=" & dminb2 & "mm" & vbCrLf & "①段轴头处安装联轴器，联轴器是标准件，最小直径应圆整为联轴器得孔径，根据工作条件选择凸缘联轴器" & vbCrLf & "由于T2'=9550*P2'/n2=" & T2 & "N*m,由表14-1查取联轴器工作情况系数KA=" & KA & ", 计算转矩Tc=KA*T2'=" & Tc2 & "N*m" & vbCrLf & "由附表三选择" & lzq2 & ", 其孔径d1=" & d12 & "mm,联轴器的毂长L=" & lzqLx2 & "mm,为使联轴器定位可靠,取l1=" & l12 & "mm" & vbCrLf & "   ①段公称尺寸d1*l1=" & d12 & "*" & l12 & "mm"
+ss3 = ss3 & vbCrLf & "②段轴身处安装密封圈,直径取标准密封圈孔径，同时兼顾定位轴肩高度，取d2=" & d22 & "mm,考虑联轴器安装的轴向空间，" & vbCrLf & "再结合箱体设计时轴承座结构尺寸要求，取l2=" & l22 & "mm" & vbCrLf & "   ②段公称尺寸d2*l2=" & d22 & "*" & l22 & "mm" & vbCrLf & "③轴径处安装套筒和轴承,取轴承孔径d=" & d32 & "mm,由附表2选择轴承" & zc2 & "型，轴承宽B=" & zcB2 & "mm," & vbCrLf & "轴段l3=轴承宽B＋轴承端面与箱体内壁间距(轴承脂润滑(见表12.12)，轴承端面距离箱体内壁取15mm)" & vbCrLf & "＋箱体内壁与齿轮端面间距(取Δ=15mm)，计入倒角宽和l4段的缩进3mm，取l3=" & l32 & "mm" & vbCrLf & "   ③段公称尺寸d3*l3=" & d32 & "*" & l32 & "mm" & vbCrLf & "④段轴头处安装齿轮，为方便安装，直径应大于轴承孔径取d=" & d42 & "mm,为使齿轮定位可靠取l4=" & l42 & "＜b2=" & b2 & "mm" & vbCrLf & "   ④段公称尺寸d4*l4=" & d42 & "*" & l42 & "mm"
+ss3 = ss3 & vbCrLf & "⑤考虑齿轮的轴向定位需有定位轴肩，取d5=" & d52 & "mm" & vbCrLf & "   ⑤段公称尺寸d5*l5=" & d52 & "*" & l52 & "mm" & vbCrLf & "⑦段为滚动轴承安装处，一般角接触球轴承成对使用，所以选择与③段处同型号的轴承" & zc2 & "，取轴径d=" & d72 & "mm" & vbCrLf & "   ⑦段公称尺寸d7*l7=" & d72 & "*" & l72 & "mm" & vbCrLf & "⑥段为滚动轴承的定位轴肩，其直径应小于滚动轴承内圈外径，取d=" & d62 & "mm" & vbCrLf & "   ⑥段公称尺寸d6*l6=" & d62 & "*" & l62 & "mm" & vbCrLf & "至此轴的各段直径和长度已初步确定。"
+'低速轴设计完成
+ss3 = ss3 & vbCrLf & vbCrLf & "4.2 齿轮轴的设计" & vbCrLf & "轴的材料与低速轴一致" & vbCrLf & "4.2.1 拟定轴上装配方案" & vbCrLf & vbCrLf & "4.2.2 轴的结构尺寸设计" & vbCrLf & "根据式(11-2)，得轴的最小直径dmin=" & dmina1 & "mm,轴端装有联轴器，轴颈增加5%，得dmin=" & dminb1 & "mm" & vbCrLf & "①段轴头处安装联轴器，联轴器是标准件，最小直径应圆整为联轴器得孔径，根据工作条件选择凸缘联轴器" & vbCrLf & "由于T1'=9550*P1'/n1=" & T1 & "N*m,由表14-1查取联轴器工作情况系数KA=" & KA & ", 计算转矩Tc=KA*T1'=" & Tc1 & "N*m" & vbCrLf & "由附表三选择" & lzq1 & ", 其孔径d1=" & d11 & "mm,联轴器的毂长L=" & lzqLx1 & "mm,为使联轴器定位可靠,取l1=" & l11 & "mm" & vbCrLf & "   ①段公称尺寸d1*l1=" & d11 & "*" & l11 & "mm"
+ss3 = ss3 & vbCrLf & "②段轴身处安装密封圈,直径取标准密封圈孔径，同时兼顾定位轴肩高度，取d2=" & d21 & "mm,考虑联轴器安装的轴向空间，" & vbCrLf & "再结合箱体设计时轴承座结构尺寸要求，取l2=" & l21 & "mm" & vbCrLf & "   ②段公称尺寸d2*l2=" & d21 & "*" & l21 & "mm" & vbCrLf & "③轴径处安装轴承,取轴承孔径d=" & d31 & "mm,由附表2选择轴承" & zc1 & "型，轴承宽B=" & zcB1 & "mm，取l3=" & l31 & "mm" & vbCrLf & "   ③段公称尺寸d3*l3=" & d31 & "*" & l31 & "mm" & vbCrLf & "④段为轴承定位轴肩，取d4=" & d41 & "mm,由于两齿轮宽度有异，为使两齿轮完全啮合取l4=" & l41 & "mm" & vbCrLf & "   ④段公称尺寸d4*l4=" & d41 & "*" & l41 & "mm"
+ss3 = ss3 & vbCrLf & "⑤段为齿轮因此参数即齿轮参数" & vbCrLf & "   ⑤段公称尺寸d5*l5=" & d51 & "*" & l51 & "mm" & vbCrLf & "⑥段与④段，⑦段与③段参数相同，因此" & vbCrLf & "   ⑥段公称尺寸d6*l6=" & d61 & "*" & l61 & "mm" & vbCrLf & "   ⑦段公称尺寸d7*l7=" & d71 & "*" & l71 & "mm" & vbCrLf & "至此轴的各段直径和长度已初步确定。"
+'齿轮轴设计完成
+ss4 = "4.3 低速轴受力分析与校核" & vbCrLf & "4.3.1 轴上受力分析" & vbCrLf & "齿轮的圆周力Ft2=" & Fτ2 & "N;齿轮的径向力Fr2=" & Fr2 & "N;齿轮的轴向力Fa2=" & Fa2 & "N" & vbCrLf & "4.3.2 垂直面上的支座反力" & vbCrLf & "Fv1=" & Fv12 & "N,Fv2=" & Fv22 & "N" & vbCrLf & "4.3.3 垂直面的弯矩" & vbCrLf & "Mv1=" & Mv12 & "N*mm,Mv2=" & Mv22 & "N*mm" & vbCrLf & "4.3.4 水平面支座反力" & vbCrLf & "FH1=" & FH12 & "N,FH2=" & FH22 & "N" & vbCrLf & "4.3.5 水平面弯矩" & vbCrLf & "MH=" & MH2 & "N*mm" & vbCrLf & "4.3.6 合成弯矩" & vbCrLf & "Mc1=" & Mc12 & "N*mm,Mc2=" & Mc22 & "N*mm" & vbCrLf & "4.3.7 转矩" & vbCrLf & "T2=" & T2 & "N*mm" & vbCrLf & "4.3.8 当量弯矩" & vbCrLf & "因是单向运转，考虑启动、停车因素，转矩按脉动循环变化计算，取α=0.6" & vbCrLf & "Mec1=" & Mec12 & "N*mm,Mec2=" & Mec22 & "N*mm,αT2=" & Mem2 & "N*mm" & vbCrLf & "4.3.9 判断危险截面并验证强度" & vbCrLf & "①剖面C右侧当量弯矩最大，为危险截面，由式(11-5)得σec=" & σec2 & "MPa<[σ-1b]" & vbCrLf & "②剖面D处直径最小，为危险截面，σeD="
+ss4 = ss4 & σem2 & "MPa<[σ-1b]" & vbCrLf & "低速轴强度校核完成！"
+ss4 = ss4 & vbCrLf & vbCrLf & "4.4 齿轮轴的受力分析与校核" & vbCrLf & "4.4.1 轴上受力分析" & vbCrLf & "齿轮的圆周力Ft1=" & Fτ1 & "N;齿轮的径向力Fr1=" & Fr1 & "N;齿轮的轴向力Fa1=" & Fa1 & "N" & vbCrLf & "4.4.2 垂直面上的支座反力" & vbCrLf & "Fv1=" & Fv11 & "N,Fv2=" & Fv21 & "N" & vbCrLf & "4.4.3 垂直面的弯矩" & vbCrLf & "Mv1=" & Mv11 & "N*mm,Mv2=" & Mv21 & "N*mm" & vbCrLf & "4.4.4 水平面支座反力" & vbCrLf & "FH1=" & FH11 & "N,FH2=" & FH21 & "N" & vbCrLf & "4.4.5 水平面弯矩" & vbCrLf & "MH=" & MH1 & "N*mm" & vbCrLf & "4.4.6 合成弯矩" & vbCrLf & "Mc1=" & Mc11 & "N*mm,Mc2=" & Mc21 & "N*mm" & vbCrLf & "4.4.7 转矩" & vbCrLf & "T1=" & T1 & "N*mm" & vbCrLf & "4.4.8 当量弯矩" & vbCrLf & "因是单向运转，考虑启动、停车因素，转矩按脉动循环变化计算，取α=0.6" & vbCrLf & "Mec1=" & Mec11 & "N*mm,Mec2=" & Mec21 & "N*mm,αT1=" & Mem1 & "N*mm" & vbCrLf
+ss4 = ss4 & "4.4.9 判断危险截面并验证强度" & vbCrLf & "①剖面C右侧当量弯矩最大，为危险截面，由式(11-5)得σec=" & σec1 & "MPa<[σ-1b]" & vbCrLf & "②剖面D处直径最小，为危险截面，σeD=" & σem1 & "MPa<[σ-1b]" & vbCrLf & "齿轮轴强度校核完成！"
+ss5 = "5.1 键的选取与校核" & vbCrLf & "轴的周向固定需要合适的键，在两轴与联轴器周向固定中选择C型普通平键；低速轴与齿轮周向固定中选择B型普通平键。" & vbCrLf & "5.1.1 齿轮轴上键的选择与校核" & vbCrLf & "由表11-4查得安装联轴器处平键尺寸b*h=" & bj1 & "*" & hj1 & "mm,取键长L=" & lj1 & "mm，键的工作长度l1'=L-b/2=" & k1 & "mm,键与轴毂槽的接触高度k1=0.5h=" & hy1 & "mm" & vbCrLf & "由式11-7得联轴器周向固定用C型普通平键连接强度" & vbCrLf & "σP1=" & σj1 & "MPa<[σP]" & "挤压强度合格"
+ss5 = ss5 & vbCrLf & "5.1.2 低速轴上键的选择与校核" & vbCrLf & "由表11-4查得安装联轴器处平键尺寸b*h=" & bj2 & "*" & hj2 & "mm,取键长L=" & lj2 & "mm，键的工作长度l1'=L-b/2=" & k2 & "mm,键与轴毂槽的接触高度k1=0.5h=" & hy2 & "mm" & vbCrLf & "齿轮的周向固定采用B型普通平键,平键尺寸b*h=" & bj3 & "*" & hj3 & "mm,取键长L=" & lj3 & "mm,工作高度k4=0.5h=" & hy3 & "mm。" & vbCrLf & "两个键槽布置在轴的同一母线上。" & vbCrLf & "由式11-7得联轴器周向固定用C型普通平键连接强度" & vbCrLf & "σP1=" & σj2 & "MPa<[σP]" & "挤压强度合格" & vbCrLf & "齿轮的周向固定用B型普通平键连接强度" & vbCrLf & "σP2=" & σj3 & "MPa<[σP]" & vbCrLf & "挤压强度足够"
+ss6 = "5.2 轴承的确定与校核" & vbCrLf & "5.2.1 计算轴承的径向载荷" & vbCrLf & "齿轮轴:Fr1=" & Fr11 & "N,Fr2=" & Fr21 & "N" & vbCrLf & "低速轴:Fr1=" & Fr12 & "N,Fr2=" & Fr22 & "N" & vbCrLf & "5.2.2 计算轴承的轴向载荷" & vbCrLf & "因为Fs=Fr*0.68" & vbCrLf & "所以齿轮轴Fs1=" & Fs11 & "N,Fs2=" & Fs21 & "N" & vbCrLf & "所以低速轴Fs1=" & Fs12 & "N,Fs2=" & Fs22 & "N" & vbCrLf & "计算出轴的左右运动趋势,得到轴承的轴向载荷:" & vbCrLf & "齿轮轴Fa1=" & Fa11 & "N,Fa2=" & Fa21 & vbCrLf & "低速轴Fa1=" & Fa12 & "N,Fa2=" & Fa22 & "N" & vbCrLf & "5.2.3 计算轴承的当量动载荷" & "由表12-7查得70000AC轴承,e=0.68,根据Fa/Fr查表12-7得:" & vbCrLf & "齿轮轴X1=" & X11 & ",Y1=" & Y11 & ",X2=" & X21 & ",Y2=" & Y21 & vbCrLf & "低速轴X1=" & X12 & ",Y1=" & Y12 & ",X2=" & X22 & ",Y2=" & Y22 & vbCrLf & "运转平稳,查表12-8得载荷系数fp=1.05;并由式(12-9)得" & vbCrLf & "齿轮轴P1=" & P11 & "N,P2=" & P21 & "N" & vbCrLf & "低速轴P1=" & P12 & "N,P2=" & P22 & "N" & vbCrLf
+ss6 = ss6 & "5.2.4 计算轴承的寿命" & vbCrLf & "由附表二查得齿轮轴轴承" & zc1 & "和低速轴轴承" & zc2 & "的基本额定动载荷分别为Cr=" & Cr1 & "kN," & Cr2 & "kN,工作温度小于120℃," & vbCrLf & "查表12-9得温度系数ft=1,轴承类型为球轴承,ε=3" & vbCrLf & "由式(12-13)得" & vbCrLf & "齿轮轴轴承寿命Lh=" & Lh1 & "h,低速轴轴承寿命Lh=" & Lh2 & "h" & vbCrLf & "按每年工作" & Day & "天," & bz & "班制,约合" & year1 & "年(齿轮轴轴承)," & year2 & "年(低速轴轴承)"
+ss6 = ss6 & vbCrLf & "5.2.5 使用要求" & vbCrLf & "齿轮轴轴承使用要求:" & zcy1 & vbCrLf & "低速轴轴承使用要求:" & zcy2
+Else '直齿轮，深沟球轴承
+ss2 = ss2 & vbCrLf & "由于为闭式齿轮传动，按齿面接触疲劳强度设计，齿根弯曲疲劳强度校核。" & vbCrLf & vbCrLf & "3.2 按齿面接触疲劳强度设计" & vbCrLf & "①转矩T=" & T & "N*mm" & vbCrLf & "②载荷系数查表7-4得K=1.05" & vbCrLf & "③选择齿数和齿宽系数" & vbCrLf & "取小齿轮齿数z1=26，则z2=i*z1=" & iz & "*" & z1 & "=" & zz2 & ", 圆整后齿数应尽量互质取z2=" & z2 & vbCrLf & "则实际传动比i'=" & i & "，且传动比误差小于±5%,得u=" & i & vbCrLf & "由表7-6，按软齿面对称布置查得φd=1" & vbCrLf & "④由表7-5查得材料弹性系数ZE=189.8MPa" & vbCrLf & "⑤σHP=min{σHP1,σHP2}=" & σHP & "MPa" & vbCrLf & "⑥按设计公式计算" & vbCrLf
+ss2 = ss2 & "d1=" & dx & "则mn≥d1/z1=" & mn1 & "mm。查表7-1取标准模数mn=" & mn & "mm" & vbCrLf & vbCrLf & "3.3 计算齿轮传动的主要几何尺寸" & vbCrLf & "按以上公式得d1=" & d1 & "mm,d2=" & d2 & "mm,b=" & b & "mm,所以取b2=" & b2 & "mm,b1=" & b1 & "mm, 中心距a=" & a & "mm" & vbCrLf & vbCrLf & "3.4 按齿根弯曲疲劳强度校核" & vbCrLf & "由表7-7插值得YFa1=" & YFa1 & ",YFa2=" & YFa2 & ",YSa1=" & YSa1 & "YSa2=" & YSa2 & vbCrLf & "按校核公式计算σF1=" & σF1 & "MPa<σFP1 ,σF2=" & σF2 & "MPa<σFP2 " & vbCrLf & "齿根弯曲疲劳强度满足要求，不会发生折断。" & vbCrLf & vbCrLf & "3.5 验算圆周速度" & vbCrLf & "圆周速度v=" & v & "m/s<5m/s,对照表7-10可知选8级精度是合适的。"
+ss2 = ss2 & vbCrLf & vbCrLf & "3.6 齿轮传动参数" & vbCrLf & Text12.Text
+ss3 = "4.1.1 选择轴的材料" & vbCrLf & cdzm & vbCrLf & vbCrLf & "4.1.2 拟定轴上装配方案" & vbCrLf & vbCrLf & "4.1.3 轴的结构尺寸设计" & vbCrLf & "低速轴输入功率P2=" & P2 & "kw,输出功率P2'=P1*η1=" & P2 & "*0.99=" & P2x & "kw" & vbCrLf & "齿轮轴转速n=" & Nn2 & "r/min" & vbCrLf & "根据式(11-2)，得轴的最小直径dmin=" & dmina2 & "mm,轴端装有联轴器，轴颈增加5%，得dmin=" & dminb2 & "mm" & vbCrLf & "①段轴头处安装联轴器，联轴器是标准件，最小直径应圆整为联轴器得孔径，根据工作条件选择凸缘联轴器" & vbCrLf & "由于T2'=9550*P2'/n2=" & T2 & "N*m,由表14-1查取联轴器工作情况系数KA=" & KA & ", 计算转矩Tc=KA*T2'=" & Tc2 & "N*m" & vbCrLf & "由附表三选择" & lzq2 & ", 其孔径d1=" & d12 & "mm,联轴器的毂长L=" & lzqLx2 & "mm,为使联轴器定位可靠,取l1=" & l12 & "mm" & vbCrLf & "   ①段公称尺寸d1*l1=" & d12 & "*" & l12 & "mm"
+ss3 = ss3 & vbCrLf & "②段轴身处安装密封圈,直径取标准密封圈孔径，同时兼顾定位轴肩高度，取d2=" & d22 & "mm,考虑联轴器安装的轴向空间，" & vbCrLf & "再结合箱体设计时轴承座结构尺寸要求，取l2=" & l22 & "mm" & vbCrLf & "   ②段公称尺寸d2*l2=" & d22 & "*" & l22 & "mm" & vbCrLf & "③轴径处安装套筒和轴承,取轴承孔径d=" & d32 & "mm,由附表2选择轴承" & zc2 & "型，轴承宽B=" & zcB2 & "mm," & vbCrLf & "轴段l3=轴承宽B＋轴承端面与箱体内壁间距(轴承脂润滑(见表12.12)，轴承端面距离箱体内壁取15mm)" & vbCrLf & "＋箱体内壁与齿轮端面间距(取Δ=15mm)，计入倒角宽和l4段的缩进3mm，取l3=" & l32 & "mm" & vbCrLf & "   ③段公称尺寸d3*l3=" & d32 & "*" & l32 & "mm" & vbCrLf & "④段轴头处安装齿轮，为方便安装，直径应大于轴承孔径取d=" & d42 & "mm,为使齿轮定位可靠取l4=" & l42 & "＜b2=" & b2 & "mm" & vbCrLf & "   ④段公称尺寸d4*l4=" & d42 & "*" & l42 & "mm"
+ss3 = ss3 & vbCrLf & "⑤考虑齿轮的轴向定位需有定位轴肩，取d5=" & d52 & "mm" & vbCrLf & "   ⑤段公称尺寸d5*l5=" & d52 & "*" & l52 & "mm" & vbCrLf & "⑦段为滚动轴承安装处，一般深沟球轴承成对使用，所以选择与③段处同型号的轴承" & zc2 & "，取轴径d=" & d72 & "mm" & vbCrLf & "   ⑦段公称尺寸d7*l7=" & d72 & "*" & l72 & "mm" & vbCrLf & "⑥段为滚动轴承的定位轴肩，其直径应小于滚动轴承内圈外径，取d=" & d62 & "mm" & vbCrLf & "   ⑥段公称尺寸d6*l6=" & d62 & "*" & l62 & "mm" & vbCrLf & "至此轴的各段直径和长度已初步确定。"
+'低速轴设计完成
+ss3 = ss3 & vbCrLf & vbCrLf & "4.2 齿轮轴的设计" & vbCrLf & "轴的材料与低速轴一致" & vbCrLf & "4.2.1 拟定轴上装配方案" & vbCrLf & vbCrLf & "4.2.2 轴的结构尺寸设计" & vbCrLf & "根据式(11-2)，得轴的最小直径dmin=" & dmina1 & "mm,轴端装有联轴器，轴颈增加5%，得dmin=" & dminb1 & "mm" & vbCrLf & "①段轴头处安装联轴器，联轴器是标准件，最小直径应圆整为联轴器得孔径，根据工作条件选择凸缘联轴器" & vbCrLf & "由于T1'=9550*P1'/n1=" & T1 & "N*m,由表14-1查取联轴器工作情况系数KA=" & KA & ", 计算转矩Tc=KA*T1'=" & Tc1 & "N*m" & vbCrLf & "由附表三选择" & lzq1 & ", 其孔径d1=" & d11 & "mm,联轴器的毂长L=" & lzqLx1 & "mm,为使联轴器定位可靠,取l1=" & l11 & "mm" & vbCrLf & "   ①段公称尺寸d1*l1=" & d11 & "*" & l11 & "mm"
+ss3 = ss3 & vbCrLf & "②段轴身处安装密封圈,直径取标准密封圈孔径，同时兼顾定位轴肩高度，取d2=" & d21 & "mm,考虑联轴器安装的轴向空间，" & vbCrLf & "再结合箱体设计时轴承座结构尺寸要求，取l2=" & l21 & "mm" & vbCrLf & "   ②段公称尺寸d2*l2=" & d21 & "*" & l21 & "mm" & vbCrLf & "③轴径处安装轴承,取轴承孔径d=" & d31 & "mm,由附表2选择轴承" & zc1 & "型，轴承宽B=" & zcB1 & "mm，取l3=" & l31 & "mm" & vbCrLf & "   ③段公称尺寸d3*l3=" & d31 & "*" & l31 & "mm" & vbCrLf & "④段为轴承定位轴肩，取d4=" & d41 & "mm,由于两齿轮宽度有异，为使两齿轮完全啮合取l4=" & l41 & "mm" & vbCrLf & "   ④段公称尺寸d4*l4=" & d41 & "*" & l41 & "mm"
+ss3 = ss3 & vbCrLf & "⑤段为齿轮因此参数即齿轮参数" & vbCrLf & "   ⑤段公称尺寸d5*l5=" & d51 & "*" & l51 & "mm" & vbCrLf & "⑥段与④段，⑦段与③段参数相同，因此" & vbCrLf & "   ⑥段公称尺寸d6*l6=" & d61 & "*" & l61 & "mm" & vbCrLf & "   ⑦段公称尺寸d7*l7=" & d71 & "*" & l71 & "mm" & vbCrLf & "至此轴的各段直径和长度已初步确定。"
+'齿轮轴设计完成
+ss4 = "4.3 低速轴受力分析与校核" & vbCrLf & "4.3.1 轴上受力分析" & vbCrLf & "齿轮的圆周力Ft2=" & Fτ2 & "N;齿轮的径向力Fr2=" & Fr2 & "N;齿轮的轴向力Fa2=" & Fa2 & "N" & vbCrLf & "4.3.2 垂直面上的支座反力" & vbCrLf & "Fv1=" & Fv12 & "N,Fv2=" & Fv22 & "N" & vbCrLf & "4.3.3 垂直面的弯矩" & vbCrLf & "Mv1=" & Mv12 & "N*mm,Mv2=" & Mv22 & "N*mm" & vbCrLf & "4.3.4 水平面支座反力" & vbCrLf & "FH1=" & FH12 & "N,FH2=" & FH22 & "N" & vbCrLf & "4.3.5 水平面弯矩" & vbCrLf & "MH=" & MH2 & "N*mm" & vbCrLf & "4.3.6 合成弯矩" & vbCrLf & "Mc1=" & Mc12 & "N*mm,Mc2=" & Mc22 & "N*mm" & vbCrLf & "4.3.7 转矩" & vbCrLf & "T2=" & T2 & "N*mm" & vbCrLf & "4.3.8 当量弯矩" & vbCrLf & "因是单向运转，考虑启动、停车因素，转矩按脉动循环变化计算，取α=0.6" & vbCrLf & "Mec1=" & Mec12 & "N*mm,Mec2=" & Mec22 & "N*mm,αT2=" & Mem2 & "N*mm" & vbCrLf & "4.3.9 判断危险截面并验证强度" & vbCrLf & "①剖面C右侧当量弯矩最大，为危险截面，由式(11-5)得σec=" & σec2 & "MPa<[σ-1b]" & vbCrLf & "②剖面D处直径最小，为危险截面，σeD="
+ss4 = ss4 & σem2 & "MPa<[σ-1b]" & vbCrLf & "低速轴强度校核完成！"
+ss4 = ss4 & vbCrLf & vbCrLf & "4.4 齿轮轴的受力分析与校核" & vbCrLf & "4.4.1 轴上受力分析" & vbCrLf & "齿轮的圆周力Ft1=" & Fτ1 & "N;齿轮的径向力Fr1=" & Fr1 & "N;齿轮的轴向力Fa1=" & Fa1 & "N" & vbCrLf & "4.4.2 垂直面上的支座反力" & vbCrLf & "Fv1=" & Fv11 & "N,Fv2=" & Fv21 & "N" & vbCrLf & "4.4.3 垂直面的弯矩" & vbCrLf & "Mv1=" & Mv11 & "N*mm,Mv2=" & Mv21 & "N*mm" & vbCrLf & "4.4.4 水平面支座反力" & vbCrLf & "FH1=" & FH11 & "N,FH2=" & FH21 & "N" & vbCrLf & "4.4.5 水平面弯矩" & vbCrLf & "MH=" & MH1 & "N*mm" & vbCrLf & "4.4.6 合成弯矩" & vbCrLf & "Mc1=" & Mc11 & "N*mm,Mc2=" & Mc21 & "N*mm" & vbCrLf & "4.4.7 转矩" & vbCrLf & "T1=" & T1 & "N*mm" & vbCrLf & "4.4.8 当量弯矩" & vbCrLf & "因是单向运转，考虑启动、停车因素，转矩按脉动循环变化计算，取α=0.6" & vbCrLf & "Mec1=" & Mec11 & "N*mm,Mec2=" & Mec21 & "N*mm,αT1=" & Mem1 & "N*mm" & vbCrLf
+ss4 = ss4 & "4.4.9 判断危险截面并验证强度" & vbCrLf & "①剖面C右侧当量弯矩最大，为危险截面，由式(11-5)得σec=" & σec1 & "MPa<[σ-1b]" & vbCrLf & "②剖面D处直径最小，为危险截面，σeD=" & σem1 & "MPa<[σ-1b]" & vbCrLf & "齿轮轴强度校核完成！"
+ss5 = "5.1 键的选取与校核" & vbCrLf & "轴的周向固定需要合适的键，在两轴与联轴器周向固定中选择C型普通平键；低速轴与齿轮周向固定中选择B型普通平键。" & vbCrLf & "5.1.1 齿轮轴上键的选择与校核" & vbCrLf & "由表11-4查得安装联轴器处平键尺寸b*h=" & bj1 & "*" & hj1 & "mm,取键长L=" & lj1 & "mm，键的工作长度l1'=L-b/2=" & k1 & "mm,键与轴毂槽的接触高度k1=0.5h=" & hy1 & "mm" & vbCrLf & "由式11-7得联轴器周向固定用C型普通平键连接强度" & vbCrLf & "σP1=" & σj1 & "MPa<[σP]" & "挤压强度合格"
+ss5 = ss5 & vbCrLf & "5.1.2 低速轴上键的选择与校核" & vbCrLf & "由表11-4查得安装联轴器处平键尺寸b*h=" & bj2 & "*" & hj2 & "mm,取键长L=" & lj2 & "mm，键的工作长度l1'=L-b/2=" & k2 & "mm,键与轴毂槽的接触高度k1=0.5h=" & hy2 & "mm" & vbCrLf & "齿轮的周向固定采用B型普通平键,平键尺寸b*h=" & bj3 & "*" & hj3 & "mm,取键长L=" & lj3 & "mm,工作高度k4=0.5h=" & hy3 & "mm。" & vbCrLf & "两个键槽布置在轴的同一母线上。" & vbCrLf & "由式11-7得联轴器周向固定用C型普通平键连接强度" & vbCrLf & "σP1=" & σj2 & "MPa<[σP]" & "挤压强度合格" & vbCrLf & "齿轮的周向固定用B型普通平键连接强度" & vbCrLf & "σP2=" & σj3 & "MPa<[σP]" & vbCrLf & "挤压强度足够"
+ss6 = "5.2 轴承的确定与校核" & vbCrLf & "5.2.1 计算轴承的径向载荷" & vbCrLf & "齿轮轴:Fr1=" & Fr11 & "N,Fr2=" & Fr21 & "N" & vbCrLf & "低速轴:Fr1=" & Fr12 & "N,Fr2=" & Fr22 & "N" & vbCrLf & "5.2.2 计算轴承的当量动载荷" & "由表12-7查得6000轴承对应系数:" & vbCrLf & "齿轮轴X1=" & X11 & ",Y1=" & Y11 & ",X2=" & X21 & ",Y2=" & Y21 & vbCrLf & "低速轴X1=" & X12 & ",Y1=" & Y12 & ",X2=" & X22 & ",Y2=" & Y22 & vbCrLf & "运转平稳,查表12-8得载荷系数fp=1.05;并由式(12-9)得" & vbCrLf & "齿轮轴P1=" & P11 & "N,P2=" & P21 & "N" & vbCrLf & "低速轴P1=" & P12 & "N,P2=" & P22 & "N" & vbCrLf
+ss6 = ss6 & "5.2.3 计算轴承的寿命" & vbCrLf & "由附表二查得齿轮轴轴承" & zc1 & "和低速轴轴承" & zc2 & "的基本额定动载荷分别为Cr=" & Cr1 & "kN," & Cr2 & "kN,工作温度小于120℃," & vbCrLf & "查表12-9得温度系数ft=1,轴承类型为球轴承,ε=3" & vbCrLf & "由式(12-13)得" & vbCrLf & "齿轮轴轴承寿命Lh=" & Lh1 & "h,低速轴轴承寿命Lh=" & Lh2 & "h" & vbCrLf & "按每年工作" & Day & "天," & bz & "班制,约合" & year1 & "年(齿轮轴轴承)," & year2 & "年(低速轴轴承)"
+ss6 = ss6 & vbCrLf & "5.2.4 使用要求" & vbCrLf & "齿轮轴轴承使用要求:" & zcy1 & vbCrLf & "低速轴轴承使用要求:" & zcy2
+End If
+SSS1 = ss1 & vbCrLf & vbCrLf & "3.1 " & vbCrLf & clm & vbCrLf & ss2 '齿轮设计说明书完成
+SSS2 = ss3 & vbCrLf & vbCrLf & ss4 '轴设计说明书完成
+SSS3 = ss5 & vbCrLf & vbCrLf & ss6
+SSS4 = "一、设计要求" & vbCrLf & "1.1 传动装置简图" & vbCrLf & vbCrLf & "1.2 原始数据" & vbCrLf & "传动装置的原始数据如下：" & vbCrLf & "圆周力F/" & F & "N    转速n/" & n & "r/min    转筒直径D/" & D & "mm" & vbCrLf & "" & vbCrLf & "1.3 工作条件" & vbCrLf & "减速器设计使用寿命10年，每年工作250天，两班制，单向运转、载荷平稳。" & vbCrLf & vbCrLf
+SSS4 = SSS4 & "二、传动系统的总体设计" & vbCrLf & "2.1 电动机的选择" & vbCrLf & " 2.1.1 电机类型" & vbCrLf & "推荐使用YE3系列三相异步电动机" & vbCrLf & "" & vbCrLf & "2.1.2 选择电动机的功率" & vbCrLf & "电动机所需要的功率Pd=Pw/η" & vbCrLf & "设：工作机所需功率Pw，η1=0.99,η 2=0.97,η3=0.99, η4= 0.96，η1,η2,η3,η4分别代表轴承、齿轮、联轴器、卷筒的工作效率。" & vbCrLf & " Pw=FπDn/(60*1000*1000) =" & Pw & " kw，" & vbCrLf & "传动的总效率：η=η1^3* η2*η3^2 *η4,所以η=0.886，" & vbCrLf & "所需电动机的功率为：Pd=Pw/η=" & Pw & "/0.886=" & Pd & " kw" & vbCrLf & "" & vbCrLf
+SSS4 = SSS4 & "2.1.3 确定电动机转速nd" & vbCrLf & "已知滚筒转速n= " & n & "r/min，利用合适传动比i=3~5，所以电动机转速nd=i * n= " & 3 * n & "  ~  " & 5 * n & "r/min" & vbCrLf & "" & vbCrLf & "2.1.4 确定电动机技术数据" & vbCrLf & "电动机额定功率Ped>Pd，并且建议较低的同步转速，" & vbCrLf & "查附录A，选择型号" & YE & " ，额定功率Ped= " & Ped & " kw，具体参数见附录A" & vbCrLf & vbCrLf
+SSS4 = SSS4 & "2.2 传动装置运动和动力参数的计算" & vbCrLf & "2.2.1 两传动轴转速与输入功率计算" & vbCrLf & "高速轴的转速n1=nd= " & nd & " r/min" & vbCrLf & "低速轴的转速n2=n=" & n & " r/min" & vbCrLf & "传动比i=" & nd / n & " ，调整传动比为i=" & uii & vbCrLf & "高速轴的转速n1=" & Nn1 & " r/min" & vbCrLf & "低速轴的转速n2=" & Nn2 & " r/min" & vbCrLf
+SSS4 = SSS4 & "电动机工作效率ηd=0.8" & vbCrLf & "高速轴的输入功率P1=Ped*ηd*η3*η1=" & P1 & "kw" & vbCrLf & "低速轴的输入功率P2=P1*η1*η2=" & P2 & "kw" & vbCrLf & "" & vbCrLf & "2.2.2 两传动轴扭矩计算" & vbCrLf & "高速轴 T1=9550*P1/n1 = " & T1 & " N*m" & vbCrLf & "低速轴T2=T1*i*η1*η2 =" & T2 & " N*m" & vbCrLf & "" & vbCrLf
+SSS4 = SSS4 & "三、齿轮的设计" & vbCrLf & "3.1 选择齿轮材料、确定许用应力和精度等级" & vbCrLf & clm & vbCrLf & ss2 & vbCrLf & "" & vbCrLf
+SSS4 = SSS4 & "四、传动轴的设计、受力分析与校核" & vbCrLf & "4.1 低速轴的设计" & vbCrLf & ss3 & vbCrLf & vbCrLf & ss4 & vbCrLf & "" & vbCrLf
+SSS4 = SSS4 & "五、轴承、键等参数的选择与校核" & vbCrLf & ss5 & vbCrLf & vbCrLf & ss6 & vbCrLf & vbCrLf & "5.3 润滑" & vbCrLf & "轴承采用脂润滑;" & vbCrLf & "齿轮采用油润滑。"
+'Text9.Text = SSS1 & vbCrLf & vbCrLf & SSS2 & vbCrLf & vbCrLf & vbCrLf & SSS3
+Text9.Text = SSS4
+
+Else
+MsgBox ("使用已达上限！")
+End If
+End Sub
+Private Sub Command2_Click()
+style = vbYesNo
+msg = "确定已保存设计说明书？点击“是”将会计入次数！"
+res = MsgBox(msg, style)
+If res = vbYes Then
+
+MsgBox ("已使用" & user & "次！")
+Command1.Enabled = True
+Command2.Enabled = False
+Command3.Enabled = False
+Text1.Enabled = True
+Text2.Enabled = True
+Text3.Enabled = True
+Text4.Enabled = True
+Text5.Enabled = True
+Frame1.Enabled = True
+'Text7.Enabled = True
+Text11.Enabled = True
+Text8.Text = "电动机参数"
+Text9.Text = "设计说明书"
+Text10.Text = "传动轴参数"
+Text12.Text = "齿轮参数"
+Text13.Text = "轴设计参数"
+Text14.Text = "联轴器参数+键参数"
+Text15.Text = "轴承参数"
+Text16.Text = "轴校核参数"
+Picture1.Cls
+
+End If
+End Sub
+
+Private Sub Command3_Click()
+Command3.Enabled = False
+Picture1.Print Text9.Text
+If zxry = 2 Then
+SavePicture Picture1.Image, App.Path & "\" & F & "-" & D & "-" & n & "-斜-说明书.jpg"
+ElseIf zxry = 1 Then
+SavePicture Picture1.Image, App.Path & "\" & F & "-" & D & "-" & n & "-直-说明书.jpg"
+End If
+MsgBox ("已保存设计说明书！")
+End Sub
+
+Private Sub Form_Load()
+
+MsgBox ("欢迎使用一级减速器辅助设计！")
+
+msg = "输入好参数后，点击Play即可生成说明书！点击Save后自动保存！进入后--退出--将视为放弃所有机会！"
+MsgBox (msg)
+
+
+End Sub
+
+Private Sub Form_Unload(Cancel As Integer)
+yesno = MsgBox("确定要退出吗？", vbYesNo)
+If yesno = vbYes Then
+End
+End If
+End Sub
+
+
