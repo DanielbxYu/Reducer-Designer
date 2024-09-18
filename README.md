@@ -2,6 +2,8 @@
 
 #### 介绍
 减速器课程设计辅助工具，旨在帮助大家学习了解设计思路。
+详情可见https://gitee.com/yu-bingxu/Reducer-Designer
+最新版可见https://gitee.com/yu-bingxu/Reducer-Designer/releases/latest
 
 #### 使用说明
 
